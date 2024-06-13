@@ -1,6 +1,7 @@
 .navbar{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     background-color: rgba(252, 248, 248, 0.911);
     z-index: 1;
     position: fixed;
@@ -15,8 +16,8 @@
     background-size:cover; 
     border-radius: 50%;
     background-image: url(https://picjj.com/images/2024/06/12/Wr0A3R.jpg);
-    width: 100px; 
-    height: 100px;
+    width: 50px; 
+    height: 50px;
 }
 
 
