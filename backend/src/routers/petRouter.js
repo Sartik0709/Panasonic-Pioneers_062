@@ -12,7 +12,7 @@ petRouter.get('/all',role_access(['Customer']), getAllPets);
 //searchPets
 petRouter.get('/type', searchPets)
 
-//ADD New pet
+//ADD New /pets/sdd
 petRouter.post('/add',role_access(['Customer']), addNewPet)
 
 //Delete pet by id

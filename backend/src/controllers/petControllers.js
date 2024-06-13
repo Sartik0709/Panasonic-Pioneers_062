@@ -1,9 +1,9 @@
 import { petModel } from "../models/petModel.js";
 
 export const addNewPet = async(req, res) => {
-  const { userId, name, breed, age, description, healthStatus, photos } = req.body;
+  const {type, userId, name, breed, age, description, healthStatus, photos } = req.body;
   try{
-      const pets = new petModel({userId, name, breed, age, description, healthStatus, photos})
+      const pets = new petModel({type,userId, name, breed, age, description, healthStatus, photos})
       await pets.save();
       res.status(200).json({Message : "New Pet Added", pets : pets})
   }
@@ -37,9 +37,10 @@ export const deletePetById = async(req, res) => {
   };
   
   export const searchPets = async (req, res) => {
-    const { breed, age, size, gender } = req.query;
+    const {type, breed, age, size, gender } = req.query;
   
     let query = {};
+    if(type) query.type = type;
     if (breed) query.breed = breed;
     if (age) query.age = age;
     if (size) query.size = size;

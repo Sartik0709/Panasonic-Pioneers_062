@@ -14,9 +14,7 @@ const port = process.env.PORT || 3100 ;
 const url = process.env.URL 
 
 app.use(express.json());
-app.use(cors({
-    origin:true
-}))
+app.use(cors());
 
 app.get('/home', (req,res) =>{
     console.log("home  route");

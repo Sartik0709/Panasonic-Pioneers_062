@@ -2,6 +2,7 @@ import { Schema, model } from "mongoose";
 
 const petSchema = new Schema(
 {
+  type : {type:String, enum:['dogs','cats','rabbits','rodents'], require: true},
   userId: { type: Schema.Types.ObjectId, ref: 'User' },
   name: { type: String, required: true },
   breed: { type: String, required: true },
