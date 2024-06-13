@@ -1,5 +1,6 @@
 import { Footer } from './Footer'
 import Styles from './Home.module.css'
+import ServicePage from './Services'
 const Home = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Home = () => {
       
     </div>
     <Footer/>
+    <ServicePage/>
     </>
   )
 }
