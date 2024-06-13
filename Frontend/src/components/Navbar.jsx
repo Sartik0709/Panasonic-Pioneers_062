@@ -1,5 +1,6 @@
 import {  Link, NavLink } from 'react-router-dom'
 import Styles from './Navbar.module.css'
+import Button from './Button'
 
 const Navbar = () => {
   return (
@@ -24,13 +25,14 @@ return isActive?{color:"#5a8a9a"}:{color:"black"}}} to="/about">About</NavLink>
 return isActive?{color:"#5a8a9a"}:{color:"black"}}}  to="/services">Services</NavLink>
 <NavLink style={({isActive})=>{ 
 return isActive?{color:"#5a8a9a"}:{color:"black"}}}  to="/services">Community</NavLink>
+<NavLink style={({isActive})=>{ 
+return isActive?{color:"#5a8a9a"}:{color:"black"}}}  to="/Register">Register</NavLink>
 
 </div>
+ 
 <div className={Styles.navbar3}>menu</div>
 </div>
-   <div>
    
-   </div>
    </>
   )
 }
