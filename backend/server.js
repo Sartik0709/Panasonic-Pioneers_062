@@ -14,7 +14,19 @@ const port = process.env.PORT || 3100 ;
 const url = process.env.URL 
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors(corsOptions));
+
+
+// Configure CORS options
+const corsOptions = {
+    origin: 'http://localhost:5174', // Replace with your frontend origin
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    optionsSuccessStatus: 200
+  };
+  
+  // Use the CORS middleware with options
+  app.use(cors(corsOptions));
 
 app.get('/home', (req,res) =>{
     console.log("home  route");
