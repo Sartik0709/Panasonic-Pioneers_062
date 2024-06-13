@@ -15,6 +15,7 @@ const url = process.env.URL || null
 
 // console.log(url);
 app.use(express.json());
+
 app.use(cors({
     origin:true,
     credentials:true
@@ -29,7 +30,7 @@ app.get('/home', (req,res) =>{
 app.use('/user',userRouter);
 
 //petRouter
-app.use('/pets',auth, petRouter);
+app.use('/pets', petRouter);
 
 
 app.listen(port,async()=>{
