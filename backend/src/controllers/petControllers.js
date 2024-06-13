@@ -1,9 +1,11 @@
 import { petModel } from "../models/petModel.js";
 
 export const addNewPet = async(req, res) => {
-  const {type, userId, name, breed, age, description, healthStatus, photos } = req.body;
+  const {type, name, breed, age, description, healthStatus, photos } = req.body;
+  const {id} = req.user;
+  console.log(id);
   try{
-      const pets = new petModel({type,userId, name, breed, age, description, healthStatus, photos})
+      const pets = new petModel({type,userId:id, name, breed, age, description, healthStatus, photos})
       await pets.save();
       res.status(200).json({Message : "New Pet Added", pets : pets})
   }

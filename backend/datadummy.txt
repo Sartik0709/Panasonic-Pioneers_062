@@ -1,4 +1,4 @@
-   "userId": "66699c0518e7c7fa2a0f4e9c",
+   "userId": "66699c0518e7c7fa2a0f4e9c", 66699c0518e7c7fa2a0f4e9c
       "name": "Laila",
       "breed": "Labra",
       "age": "2 years",
@@ -15,7 +15,7 @@
 
   {
  "type":"dogs",
- "userId": "66699c0518e7c7fa2a0f4e9c",
+ "userId": "66699c0518e7c7fa2a0f4e9c", 
  "name": "Manjnu",
  "breed":"Labra",
  "age": "1 year",
