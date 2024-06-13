@@ -1,4 +1,21 @@
 import { petModel } from "../models/petModel.js";
+// import multer from 'multer';
+
+// //multer
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//       cb(null, 'uploads/');
+//     },
+//     filename: (req, file, cb) => {
+//       cb(null, Date.now() + '-' + file.originalname);
+//     }
+//   });
+  
+//   app.use(express.static(process.cwd(),'/uploads'))
+
+//   const upload = multer({ storage });
+
+//   //
 
 export const addNewPet = async(req, res) => {
   const {type, name, breed, age, description, healthStatus, photos } = req.body;

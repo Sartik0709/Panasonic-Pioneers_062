@@ -10,7 +10,7 @@ import cors from 'cors'
 config();
 
 const app = express();
-const port = process.env.PORT || 3100 ;
+const port = process.env.PORT || 9000 ;
 const url = process.env.URL 
 
 app.use(express.json());
@@ -18,15 +18,15 @@ app.use(express.json());
 
 
 // Configure CORS options
-const corsOptions = {
-    origin: true, // Replace with your frontend origin
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-    optionsSuccessStatus: 200
-  };
+// const corsOptions = {
+//     origin: true, // Replace with your frontend origin
+//     methods: ['GET', 'POST'],
+//     allowedHeaders: ['Content-Type'],
+//     optionsSuccessStatus: 200
+//   };
   
   // Use the CORS middleware with options
-  app.use(cors(corsOptions));
+  app.use(cors());
 
 app.get('/home', (req,res) =>{
     console.log("home  route");
