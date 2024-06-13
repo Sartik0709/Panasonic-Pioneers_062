@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -17,7 +17,7 @@ const Login = () => {
       const response = await axios.post("https://panasonic-pioneers-062.onrender.com/user/login", user, {
         headers: {
           'Content-Type': 'application/json'
-        }
+         }
       });
       console.log("Login successful:", response.data);
       setUser({ email: "", password: "" });
@@ -39,13 +39,13 @@ const Login = () => {
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
           <input
             type="email"
-            id="emaillogin"
+            id="email"
             name="email"
             autoComplete="email"
             className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Enter your Email"
             value={user.email}
-            onChange={onChangeHandler}
+            onChange={ onChangeHandler }
           />
         </div>
 
@@ -54,12 +54,12 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            id="passwordlogin"
+            id="password"
             autoComplete="current-password"
             className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Enter Your Password"
             value={user.password}
-            onChange={onChangeHandler}
+            onChange={ onChangeHandler }
           />
         </div>
 
