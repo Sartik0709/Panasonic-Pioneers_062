@@ -25,7 +25,7 @@ app.get('/home', (req,res) =>{
 app.use('/user',userRouter);
 
 //petRouter
-app.use('/pets',auth, petRouter);
+app.use('/pets', petRouter);
 
 
 app.listen(port,async()=>{
