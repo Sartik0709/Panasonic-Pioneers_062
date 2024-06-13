@@ -16,9 +16,10 @@ const auth = async (req, res, next) => {
             if (err) {
                 return res.status(403).json({ message: "Invalid or expired token." });
             }
-
+            
             //Set the user information in the request object
             req.user = decoded;
+            console.log("req.user :", req.user);
             next();
         });
     } catch (error) {

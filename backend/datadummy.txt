@@ -1,0 +1,25 @@
+   "userId": "66699c0518e7c7fa2a0f4e9c", 66699c0518e7c7fa2a0f4e9c
+      "name": "Laila",
+      "breed": "Labra",
+      "age": "2 years",
+      "description": "Pro active friendly",
+      "healthStatus": "Good Healthy",
+      "photos":"urlPath"
+
+
+        "name":"Sartik",
+  "email":"sartik@gmail.com",
+  "password":"12345",
+  "role":"Customer"
+
+
+  {
+ "type":"dogs",
+ "userId": "66699c0518e7c7fa2a0f4e9c", 
+ "name": "Manjnu",
+ "breed":"Labra",
+ "age": "1 year",
+ "description":"Puppy",
+ "healthStatus":"Helthy",
+ "photos":"urlPhoto"
+}
