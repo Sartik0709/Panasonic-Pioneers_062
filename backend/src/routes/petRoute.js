@@ -68,15 +68,16 @@ pet.get('/pets/:id', async (req, res) => {
   
  //add new pet
 pet.post('/pets/add', upload.single('photos'), async (req, res) => {
-  const newPet = req.body;
+  const {type,userId,name,breed,age,gender,description,healthStatus,ownerName,ownerContact,ownerCity,photos} = req.body;
+  const id = req.user;
   if (req.file) {
     const filePath = path.posix.join('uploads', req.file.filename);
     newPet.photos = [filePath.replace(/\\/g, '/')];
     console.log(newPet.photos[0]);
   }
   try {
-    const pet = await petModel.create(newPet);
-    res.status(201).json(pet);
+    const pet = await petModel.create({type,userId:id,name,breed,age,gender,description,healthStatus,ownerName,ownerContact,ownerCity,photos});
+    res.status(201).json({pet:pet});
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -113,22 +114,22 @@ pet.post('/pets/add', upload.single('photos'), async (req, res) => {
   });
 
   //search pet
-  pet.get('/query',async (req, res) => {
-    const {type, breed, age, size, gender } = req.query;
+  // pet.get('/query',async (req, res) => {
+  //   const {type, breed, age, size, gender } = req.query;
   
-    let query = {};
-    if(type) query.type = type;
-    if (breed) query.breed = breed;
-    if (age) query.age = age;
-    if (size) query.size = size;
-    if (gender) query.gender = gender;
+  //   let query = {};
+  //   if(type) query.type = type;
+  //   if (breed) query.breed = breed;
+  //   if (age) query.age = age;
+  //   if (size) query.size = size;
+  //   if (gender) query.gender = gender;
   
-    try{
-      const pets = await petModel.find(query);
-      res.status(200).json({pets:pets});
-    } 
-    catch(err){
-      console.error(err.message);
-      res.status(500).send('Server error');
-    }
-  });
+  //   try{
+  //     const pets = await petModel.find(query);
+  //     res.status(200).json({pets:pets});
+  //   } 
+  //   catch(err){
+  //     console.error(err.message);
+  //     res.status(500).send('Server error');
+  //   }
+  // });

@@ -23,24 +23,24 @@ const port=process.env.PORT||9090;
 
 const uri=process.env.URI||null;
 
-app.use(session({
-    secret:process.env.JWT_SEACRET,
-    Store:MongoStore.create({
-        mongoUrl:uri,
-        collectionName:'session'
-    }),
-    resolve:false,
-    saveUninitialized:false,
-    Cookie:{
-        maxAge:1000*60*60
-    }
-}))
+// app.use(session({
+//     secret:process.env.JWT_SEACRET,
+//     Store:MongoStore.create({
+//         mongoUrl:uri,
+//         collectionName:'session'
+//     }),
+//     resolve:false,
+//     saveUninitialized:false,
+//     Cookie:{
+//         maxAge:1000*60*60
+//     }
+// }))
 
 app.use("/user",userRoute);
 
 app.use("",pet)
 
-app.use("",auth(['PetCareProvider']),servicePRovider)
+app.use("",servicePRovider)
 
 app.listen(port,async()=>{
     try{
