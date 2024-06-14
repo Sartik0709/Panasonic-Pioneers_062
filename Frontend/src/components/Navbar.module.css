@@ -4,8 +4,10 @@
     align-items: center;
     background-color: rgb(255, 255, 255);
     z-index: 1;
-    position: sticky;
-    top: 0PX;
+    position: fixed;
+    top: 1px;
+    right: 0px;
+    left: 0px;
 }
 
 

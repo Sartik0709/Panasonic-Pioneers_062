@@ -2,8 +2,8 @@ import { Schema, model } from "mongoose";
 
 const providerSchema = new Schema(
 {
-  userId: { type: Schema.Types.ObjectId, ref: 'User' },
-  name: { type: String, required: true,ref: 'User' },
+  userId: { type: Schema.Types.ObjectId, ref: 'users' },
+  name: { type: String, required: true,ref: 'users' },
   services: { type: String, enum:['pet_midication', 'pet_walking', 'pet_sitting', 'pet_grooming'],  require:true},
   price_hour: { type: Number, required: true },
   description: { type: String ,require:true},
