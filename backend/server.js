@@ -1,44 +1,56 @@
-import express from 'express';
+import express from 'express'
 import {config} from 'dotenv'
-import connectToDB from './src/configs/db.js';
-import  userRouter  from './src/routers/userRouter.js';
-import petRouter from './src/routers/petRouter.js';
-import auth from './src/middlewares/auth.js';
+import { connecttodb } from './src/config/db.js';
+import  session from 'express-session';
+import { pet } from './src/routes/petRoute.js';
+import { userRoute } from './src/routes/userRoute.js';
 import cors from 'cors'
+import MongoStore from 'connect-mongo';
+import { servicePRovider } from './src/routes/serviceProvider.js';
+import { auth } from './src/middlewares/auth.js';
 
-// import mongoose from 'mongoose';
+
+
 config();
 
-const app = express();
-const port = process.env.PORT || 3100 ;
-const url = process.env.URL || null
+const app=express();
 
-// console.log(url);
 app.use(express.json());
 
-app.use(cors({
-    origin:true,
-    credentials:true
-}));
+app.use(cors())
 
-app.get('/home', (req,res) =>{
-    console.log("home  route");
-    res.status(200).json("This is Home Route")
-})
+const port=process.env.PORT||9090;
 
-//userRouter
-app.use('/user',userRouter);
+const uri=process.env.URI||null;
 
-//petRouter
-app.use('/pets', petRouter);
+app.use(session({
+    secret:process.env.JWT_SEACRET,
+    Store:MongoStore.create({
+        mongoUrl:uri,
+        collectionName:'session'
+    }),
+    resolve:false,
+    saveUninitialized:false,
+    Cookie:{
+        maxAge:1000*60*60
+    }
+}))
 
+app.use("/user",userRoute);
+
+app.use("",pet)
+
+app.use("",auth(['PetCareProvider']),servicePRovider)
 
 app.listen(port,async()=>{
-try {
-    await connectToDB(url);
-    // await mongoose.connect(url)
-    console.log(`Server Running On Port : ${port}`);
-} catch (error) {
-    console.log("error while connecting port :", error);
-}
+    try{
+        await connecttodb(uri);
+        console.log('database connected successfully')
+        console.log(`server connected at the port number ${port}`);
+    }catch(err){
+        console.log(err);
+    }
+    
 })
+
+export default app;
