@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const Signup = () => {
-  const [user, setUser] = useState({ name: "", email: "", password: "", role: "" });
+  const [user, setUser] = useState({ userName: "", email: "", password: "", role: "" });
   const [error, setError] = useState();
   const navigate = useNavigate();
 
@@ -11,16 +11,21 @@ const Signup = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  //already have an account
+  const hanelClick=()=>{
+    navigate('/login');
+  }
+
   const registerUser = useCallback(async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post("https://panasonic-pioneers-062.onrender.com/user/register", user, {
+      const response = await axios.post("https://petpals-n6tx.onrender.com/user/register", user, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
       console.log("Registration successful:", response.data);
-      setUser({ name: "", email: "", password: "", role: "" });
+      setUser({ userName: "", email: "", password: "", role: "" });
       setError(null);
       // Redirect user to another page after successful registration
       navigate('/login');
@@ -37,12 +42,12 @@ const Signup = () => {
         <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">Username</label>
         <input
           type="text"
-          name="name"
+          name="userName"
           id="username"
           autoComplete="username"
-          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="min-h-9 min-w-full"
           placeholder="Enter your username"
-          value={user.name}
+          value={user.userName}
           onChange={onChangeHandler}
         />
       </div>
@@ -54,7 +59,7 @@ const Signup = () => {
           id="email"
           name="email"
           autoComplete="email"
-          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="min-h-9 min-w-full"
           placeholder="Enter your Email"
           value={user.email}
           onChange={onChangeHandler}
@@ -68,7 +73,7 @@ const Signup = () => {
           name="password"
           id="password"
           autoComplete="current-password"
-          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="min-h-9 min-w-full"
           placeholder="Enter Your Password"
           value={user.password}
           onChange={onChangeHandler}
@@ -95,7 +100,7 @@ const Signup = () => {
           id="role"
           name="role"
           autoComplete="role-name"
-          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="min-h-9 min-w-full"
           value={user.role}
           onChange={onChangeHandler}
         >
@@ -107,10 +112,16 @@ const Signup = () => {
         </select>
       </div>
 
-      <div className="flex justify-end">
+      <div className="flex justify-between">
+      <button
+          onClick={hanelClick}      
+          className="inline-flex items-center px-4 py-2  border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 "
+        >
+         Already have An account
+        </button>
         <button
           type="submit"
-          className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
         >
           Register User
         </button>
