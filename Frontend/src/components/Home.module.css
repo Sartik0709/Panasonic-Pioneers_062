@@ -33,9 +33,47 @@
 
   .home1>div:hover{
     /* border: 2px solid white; */
-   background-color: aqua;
+    border: none;
+    background-color:#fea910;
     width: 10vw;
     height: 8vh;
     display: flex;    
+  }
+  
+  .home2left{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 10vh;   
+    width: 5vw; 
+    /* border: 2px solid; */
+    background-image: url(https://dm6g3jbka53hp.cloudfront.net/static-images/homepage__services-section__sessior-icon.svg);
+  }
+  .home2left2{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 10vh;   
+    width: 5vw; 
+    /* border: 2px solid; */
+    background-image: url(https://dm6g3jbka53hp.cloudfront.net/static-images/home__pet-boarding__service-icon.png);
+  }
+  .home2left3{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 10vh;   
+    width: 5vw; 
+    /* border: 2px solid; */
+    background-image: url(https://dm6g3jbka53hp.cloudfront.net/static-images/home-page_book-services-section-dog-walking-updated-icon.svg);
+  }
+  .home2left4{
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 10vh;   
+    width: 5vw; 
+    /* border: 2px solid; */
+    background-image: url(https://dm6g3jbka53hp.cloudfront.net/static-images/homepage__services-section__vet-injection-icon%20.svg);
   }
   

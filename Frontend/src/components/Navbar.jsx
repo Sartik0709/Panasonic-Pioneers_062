@@ -1,5 +1,6 @@
 import {  Link, NavLink } from 'react-router-dom'
 import Styles from './Navbar.module.css'
+
 const Navbar = () => {
   return (
    <>
@@ -16,15 +17,14 @@ const Navbar = () => {
 <div className={Styles.navbar2}>
   
 <NavLink style={({isActive})=>{ 
-return isActive?{color:"#5a8a9a"}:{color:"black"}}} to="/contactus">Contact us</NavLink>
+return isActive?{color:"#fea910"}:{color:"black"}}} to="/contactus">Contact us</NavLink>
 <NavLink style={({isActive})=>{ 
-return isActive?{color:"#5a8a9a"}:{color:"black"}}} to="/about">About</NavLink>
+return isActive?{color:"#fea910"}:{color:"black"}}} to="/about">About</NavLink>
 <NavLink style={({isActive})=>{ 
-return isActive?{color:"#5a8a9a"}:{color:"black"}}}  to="/services">Services</NavLink>
+return isActive?{color:"#fea910"}:{color:"black"}}}  to="/services">Services</NavLink>
 <NavLink style={({isActive})=>{ 
-return isActive?{color:"#5a8a9a"}:{color:"black"}}}  to="/Community">Community</NavLink>
-<NavLink style={({isActive})=>{ 
-return isActive?{color:"#5a8a9a"}:{color:"black"}}}  to="/Register">Register</NavLink>
+return isActive?{color:"#fea910"}:{color:"black"}}}  to="/Community">Community</NavLink>
+<NavLink className={Styles.Loginbutton} to="/Register">Register</NavLink>
 
 </div>
  

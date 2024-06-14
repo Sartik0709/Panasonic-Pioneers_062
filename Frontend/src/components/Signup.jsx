@@ -19,13 +19,13 @@ const Signup = () => {
   const registerUser = useCallback(async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post("https://petpals-n6tx.onrender.com/user/register", user, {
+      const response = await axios.post("https://panasonic-pioneers-062-3.onrender.com/user/register", user, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
       console.log("Registration successful:", response.data);
-      setUser({ userName: "", email: "", password: "", role: "" });
+      setUser({ uame: "", email: "", password: "", role: "" });
       setError(null);
       // Redirect user to another page after successful registration
       navigate('/login');
