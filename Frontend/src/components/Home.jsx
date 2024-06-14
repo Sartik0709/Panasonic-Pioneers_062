@@ -1,6 +1,5 @@
 import { Footer } from './Footer'
 import Styles from './Home.module.css'
-import ServicePage from './Services'
 const Home = () => {
   return (
     <>
@@ -8,14 +7,11 @@ const Home = () => {
         <div className={Styles.home1}>
         <p>CONNECTING </p>
         <p>PETS</p>
-        <p className="text-white text-3xl">The #1 Network for Pet Lovers</p>
+        <p className="text-white text-xl ">The #1 Network for Pet Lovers</p>
         <div className="text-white text-base flex items-center justify-center m-6">Get Started</div>
-        <span className="et-pb-icon et_pb_module_header">icon</span>
-        </div>
-      
+        </div>      
     </div>
     <Footer/>
-    <ServicePage/>
     </>
   )
 }
