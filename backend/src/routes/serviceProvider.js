@@ -3,7 +3,7 @@ import { Provider } from '../models/servideProviderSchema.js';
 import { USER } from '../models/userSchema.js';
 
 export const servicePRovider=Router();
-
+//get all services
 servicePRovider.get("/service/get",async(req,res)=>{
     const {id}=req.user;
     console.log(id)
@@ -16,6 +16,7 @@ servicePRovider.get("/service/get",async(req,res)=>{
      }
 })
 
+//book service
 servicePRovider.post("/service/add",async(req,res)=>{
     const {id}=req.user;
     console.log(id)
