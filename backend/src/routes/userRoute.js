@@ -37,7 +37,7 @@ userRoute.post('/register',async(req,res)=>{
             if(err)console.log(err);
             const user=new USER({userName,email,password:result,role});
             await user.save()
-           return  res.status(201).json({"message":"user registered successfully"})
+           return  res.status(201).json({message:"user registered successfully", user :user})
           })
       }
    }

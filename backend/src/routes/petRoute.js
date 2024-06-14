@@ -25,7 +25,7 @@ pet.use('/uploads', express.static('uploads'));
 //--------------------------------------------------------//
 
 //get all pets
-pet.get('all', async(req, res) => {
+pet.get('/pets/all', async(req, res) => {
   try {
     const pets = await petModel.find();
     res.status(200).json({pets:pets});
