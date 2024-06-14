@@ -9,12 +9,24 @@ config();
 
 export const userRoute=Router();
 
+//get all users user/get
+userRoute.get("/get",async(req,res)=>{
+    try{
+        const users=await USER.find();
+        res.status(201).send(users)
+    }catch(err){
+        console.log("error while getAllUsers request");
+        res.status(500).send("error :" ,err.message)
+    }
+})
+
+//register user/register
 userRoute.post('/register',async(req,res)=>{
     let{userName,email,password,role}=req.body;
    try{
       const exuser=await USER.findOne({email});
       if(exuser){
-        return res.status(302).send("User already registerd try to login")
+        return res.status(302).send("User already register try to login")
       }
       const exusername=await USER.findOne({userName});
       if(exusername){
@@ -31,18 +43,11 @@ userRoute.post('/register',async(req,res)=>{
    }
    catch(err){
     console.log(err);
+    res.json({message : err.message})  
    }
 })
 
-userRoute.get("/get",async(req,res)=>{
-    try{
-        const users=await USER.find();
-        res.status(201).send(users)
-    }catch(err){
-        clg(err);
-    }
-})
-
+//login user user/login
 userRoute.post("/login",async(req,res)=>{
     let{email,password}=req.body;
     try{
@@ -59,16 +64,21 @@ userRoute.post("/login",async(req,res)=>{
             jwt.sign(payload,process.env.JWT_SEACRET,(err,token)=>{
                 if(err){console.log(err);}
                 else{
-                    res.status(200).json({token:token})
+                    res.status(200).json({
+                        message :"Login Successfully",
+                        token:token,
+                        user : exuser
+                    });
                 }
-            })
-        })
-    }catch(err){
-        console.log(err)
+            });
+        });
+    }catch(error){
+        console.log("error while getUserLogin request");
+        res.json({message : error.message})
     }
 })
 
-
+//logout user/logout
 userRoute.post("/logout",async(req,res)=>{
     if(req.headers.authorization===undefined){
         return res.send("token reqired");
@@ -86,5 +96,6 @@ userRoute.post("/logout",async(req,res)=>{
           });
     }catch(err){
       console.log(err);
+      res.json({message : error.message}) 
     }
 })

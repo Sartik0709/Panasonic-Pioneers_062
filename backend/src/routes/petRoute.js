@@ -14,9 +14,7 @@ const storage = multer.diskStorage({
     }
   });
   
-
-
-  const upload = multer({ storage });
+const upload = multer({ storage });
 
 export const pet=Router();
 
@@ -24,7 +22,20 @@ export const pet=Router();
 
 pet.use('/uploads', express.static('uploads'));
 
+//--------------------------------------------------------//
 
+//get all pets
+pet.get('all', async(req, res) => {
+  try {
+    const pets = await petModel.find();
+    res.status(200).json({pets:pets});
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+//get pet by id
 pet.get('/pets/:id', async (req, res) => {
     const { id } = req.params;
     const { search, sortBy } = req.query;
@@ -55,7 +66,7 @@ pet.get('/pets/:id', async (req, res) => {
   });
   
   
- 
+ //add new pet
 pet.post('/pets/add', upload.single('photos'), async (req, res) => {
   const newPet = req.body;
   if (req.file) {
@@ -71,7 +82,8 @@ pet.post('/pets/add', upload.single('photos'), async (req, res) => {
   }
 });
   
-  pet.put('/pets/update/:id', async (req, res) => {
+//pet update by id
+  pet.patch('/pets/update/:id', async (req, res) => {
     const { id } = req.params;
     const updatedPet = req.body;
     try {
@@ -85,6 +97,8 @@ pet.post('/pets/add', upload.single('photos'), async (req, res) => {
     }
   });
   
+
+  //delete
   pet.delete('/pets/delete/:id', async (req, res) => {
     const { id } = req.params;
     try {
@@ -95,5 +109,26 @@ pet.post('/pets/add', upload.single('photos'), async (req, res) => {
       res.json({ message: 'Pet deleted successfully' });
     } catch (error) {
       res.status(500).json({ message: error.message });
+    }
+  });
+
+  //search pet
+  pet.get('/query',async (req, res) => {
+    const {type, breed, age, size, gender } = req.query;
+  
+    let query = {};
+    if(type) query.type = type;
+    if (breed) query.breed = breed;
+    if (age) query.age = age;
+    if (size) query.size = size;
+    if (gender) query.gender = gender;
+  
+    try{
+      const pets = await petModel.find(query);
+      res.status(200).json({pets:pets});
+    } 
+    catch(err){
+      console.error(err.message);
+      res.status(500).send('Server error');
     }
   });
