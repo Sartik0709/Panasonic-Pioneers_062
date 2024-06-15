@@ -1,47 +1,40 @@
-import express from 'express'
-import {config} from 'dotenv'
+import express from 'express';
+import { config } from 'dotenv';
 import { connecttodb } from './src/config/db.js';
-import  session from 'express-session';
 import { pet } from './src/routes/petRoute.js';
 import { userRoute } from './src/routes/userRoute.js';
-import cors from 'cors'
-import MongoStore from 'connect-mongo';
+import cors from 'cors';
 import { servicePRovider } from './src/routes/serviceProvider.js';
 import { auth } from './src/middlewares/auth.js';
 import BookingRouter from './src/routes/bookingRouter.js';
-
+import path from 'path';
+import fs from 'fs';
 
 
 config();
 
-const app=express();
+const app = express();
 
 app.use(express.json());
 
-app.use(cors())
+// Ensure the 'uploads' directory exists
+const uploadsDir = path.join(process.cwd(), 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
-const port=process.env.PORT||9090;
+// Serve static files from the 'uploads' directory
+app.use('/uploads', express.static(uploadsDir));
 
-const uri=process.env.URI||null;
+app.use(cors());
 
-// app.use(session({
-//     secret:process.env.JWT_SEACRET,
-//     Store:MongoStore.create({
-//         mongoUrl:uri,
-//         collectionName:'session'
-//     }),
-//     resolve:false,
-//     saveUninitialized:false,
-//     Cookie:{
-//         maxAge:1000*60*60
-//     }
-// }))
+const port = process.env.PORT || 9090;
+const uri = process.env.URI || null;
 
-app.use("/user",userRoute);
+app.use("/user", userRoute);
+app.use("", pet);
+app.use("", servicePRovider);
 
-app.use("",pet)
-
-app.use("",servicePRovider)
 
 app.use("",BookingRouter);
 

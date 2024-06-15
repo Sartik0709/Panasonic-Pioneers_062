@@ -31,3 +31,15 @@ servicePRovider.post("/service/add",async(req,res)=>{
         res.status(400).send(err.message);
      }
 })
+
+
+//get service by id 
+servicePRovider.get("/service/:id",async(req,res)=>{
+    const {id}=req.params;
+     try{
+        const provider=await Provider.findById({_id:id}); 
+        res.status(201).send({provider:provider})
+     }catch(err){
+        res.status(400).send(err.message);
+     }
+})

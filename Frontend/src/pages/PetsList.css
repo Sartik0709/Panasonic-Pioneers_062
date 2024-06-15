@@ -1,44 +1,205 @@
-.pets-list-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+/* Basic reset and layout */
+
+
+.RPetsList-container {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.RHeader {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure header stays on top */
+}
+
+.RHeader-title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.RHeader-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.RHeader-nav ul li {
+  margin-right: 10px;
+}
+
+.RHeader-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.RHeader-nav ul li a:hover {
+  background-color: #555;
+}
+
+.RContent {
+  display: flex;
+  flex: 1;
+  justify-content: center; /* Center align content */
   padding: 20px;
 }
 
-.pet-card {
-  border: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-
-.pet-card:hover {
-  transform: translateY(-5px);
-}
-
-.pet-card img {
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-body {
+.RSidebar {
+  flex: 0 0 300px;
+  background-color: #fff; /* White background */
   padding: 20px;
+  position:sticky;
+  top: 200px; /* Adjusted to ensure below header */
+  height: fit-content; /* Adjust height as per content */
+  margin-right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure sidebar above main content */
 }
 
-.card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
+.RSidebar.sticky {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 500px;
+   /* Adjust as needed */
 }
 
-.card-text {
+.RSearch-form {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.RSearch-form h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+.RForm-group {
   margin-bottom: 15px;
 }
 
-.contact-button {
-  background-color: #007bff;
-  border-color: #007bff;
+.RForm-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
 }
 
-.contact-button:hover {
+.RForm-group input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.RSearch-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.RSearch-button:hover {
   background-color: #0056b3;
-  border-color: #004085;
+}
+
+.RMain-content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Added gap between cards */
+  justify-content: center; /* Center align cards */
+}
+
+.RPet-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Fixed width for cards */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align content */
+}
+
+.RPet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.RPet-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.RPet-card:hover .RPet-image {
+  transform: scale(1.05);
+}
+
+.RPet-details {
+  margin-top: 15px;
+  text-align: center; /* Center align text */
+}
+
+.RPet-name {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.RPet-info {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.RPet-info .RKey {
+  font-weight: bold;
+  color: #007bff; /* Blue color for key */
+  margin-right: 5px;
+}
+
+.RContact-button,
+.RFavorite-button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.RContact-button:hover,
+.RFavorite-button:hover {
+  background-color: #45a049;
+}
+
+.RPets-grid{
+  margin-left: 10%;
+  margin-right: auto;
+  display: flex;
+  gap:20px;
+  flex-wrap: wrap;
 }
