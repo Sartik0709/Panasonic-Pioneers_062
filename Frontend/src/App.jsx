@@ -16,6 +16,7 @@ import Adoptpetpage from "./pages/AdpotPetPage";
 // import Signup from "./components/Signup";
 // import Loginpage from "./pages/Loginpage";
 import Signup from "./components/Signup";
+import BookingPage from './components/BookingPage';
 
 
 function App() {
@@ -34,7 +35,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/Register" element={<Signup/>} />
-          <Route path="/services" element={<ServicePage />} />
+          <Route path="/services"  element={<ServicePage />}/>
+          <Route path="/booking/:serviceId" element={<BookingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Adoptpage" element={<Adoptpetpage />} />
         </Routes>
