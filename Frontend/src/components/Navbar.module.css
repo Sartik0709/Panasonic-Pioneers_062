@@ -18,7 +18,7 @@
     /* border:2px solid ;    */
     background-image:url("https://picjj.com/images/2024/06/14/W6VZCN.jpg");
     height: 12vh;
-    width:200px;
+    width:18.5vw;
 }
 
 
@@ -40,7 +40,10 @@
     color: white;
     font-weight: bold;
     background-color:#fea910;
-    padding:2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     border-radius: 6px;
 }
 .Loginbutton:hover{
@@ -49,7 +52,7 @@
 
 
 /* media quey for mobile screen */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 930px) {
     .navbar {
         
         flex-direction: row;
@@ -65,5 +68,10 @@
     }
     .Loginbutton{
        display:none;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .navbar1{ 
+        width: 40vw;
     }
 }
