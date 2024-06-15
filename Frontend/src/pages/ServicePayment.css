@@ -1,0 +1,78 @@
+/* Body styles */
+body {
+    background-color: #f0f0f0; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Main container for the payment process and service information */
+  .service-payment-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 10%;
+  }
+  
+  /* Responsive grid for larger screens */
+  @media (min-width: 768px) {
+    .service-payment-container {
+      grid-template-columns: 1fr 1fr; 
+      margin-top: 5%;
+    }
+  }
+  
+  /* Payment process section */
+  .payment-process {
+    background-color: #ffffff; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-process h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333;
+  }
+  
+  .payment-button {
+    width: fit-content;
+    margin-top: 20px;
+    color:white;
+    padding:10px;
+    border-radius: 10px;
+    background-color: #f1b505;
+  }
+  .payment-button:hover{
+background-color: black;
+  }
+  
+  /* Service information section */
+  .service-info {
+    background-color: #f8f9fa; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-info .card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333333; /* Dark text color */
+  }
+  
+  .service-info .card-text {
+    margin-bottom: 5px;
+    color: #666666; /* Medium gray text color */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767px) {
+    .service-payment-container {
+      grid-template-columns: 1fr; /* Single column layout for mobile */
+      margin-top: 20%;
+    }
+  }
+  

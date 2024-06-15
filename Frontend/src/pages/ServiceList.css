@@ -1,0 +1,37 @@
+.intro-section {
+  background: url('https://images.pexels.com/photos/1383753/pexels-photo-1383753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat ;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: left;
+  font-weight: bolder;
+  font-size: larger;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding: 10% 40% 0 5%;
+  margin-top: 100px;
+  width:100%;
+  height:70vh;
+}
+
+.service-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.service-card {
+  margin: 15px;
+  border: 1px solid slategray;
+}
+
+.contact-button {
+  width: fit-content;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+}
+
+h1{
+  font-size: large;
+}
