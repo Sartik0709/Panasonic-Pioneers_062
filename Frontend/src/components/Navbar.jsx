@@ -48,9 +48,9 @@ const Navbar = () => {
             </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? Styles.active : Styles.inactive)}
-            to="/Community"
+            to="/about"
           >
-            Community
+            About
           </NavLink>
           {isAuthenticated ? (
             <button className={Styles.Loginbutton} onClick={onLogoutHandler}>
