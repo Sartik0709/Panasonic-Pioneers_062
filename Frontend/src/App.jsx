@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import BookingPage from './components/BookingPage';
 import ServicePage from './pages/ServicePage';
 import ServicePayment from './pages/ServicePaymentPage';
+import About from './pages/About';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/booking/:serviceId" element={<BookingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Adoptpage" element={<Adoptpetpage />} />  
+          <Route path="/about" element={<About />} />
         </Routes>
         
       </Stack>
