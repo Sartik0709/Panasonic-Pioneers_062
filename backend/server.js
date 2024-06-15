@@ -15,7 +15,12 @@ const app=express();
 
 app.use(express.json());
 
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+const uploadsDir = path.join(process.cwd(), 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
+app.use('/uploads', express.static(uploadsDir));
 
 app.use(cors())
 
