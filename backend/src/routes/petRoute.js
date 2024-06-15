@@ -20,7 +20,7 @@ export const pet=Router();
 
 // pet.use(express.static(process.cwd(),'/upload'))
 
-pet.use('/uploads', express.static('uploads'));
+pet.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 //--------------------------------------------------------//
 
@@ -72,6 +72,7 @@ pet.get('/pets/:id', async (req, res) => {
   if (req.file) {
     const filePath = path.posix.join('uploads', req.file.filename);
     newPet.photos = [filePath.replace(/\\/g, '/')];
+    newPet.userId=req.user.id;
     console.log(newPet.photos[0]);
   }
   try {
