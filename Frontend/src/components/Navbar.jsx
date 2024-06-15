@@ -28,9 +28,6 @@ const Navbar = () => {
    
 </div>
 <div className={Styles.navbar2}>
-  
-{/* <NavLink style={({isActive})=>{ 
-return isActive?{color:"#5a8a9a"}:{color:"black"}}} to="/contactus">Contact us</NavLink> */}
 <NavLink style={({isActive})=>{ 
 return isActive?{color:"#fea910"}:{color:"black"}}} to="/Home">Home</NavLink>
 <NavLink style={({isActive})=>{ 
@@ -45,7 +42,7 @@ return isActive?{color:"#fea910"}:{color:"black"}}}  to="/Community">Community</
   </button>
 ) : (
   <NavLink className={Styles.Loginbutton} to="/Register">
-    Register
+   LOGIN
   </NavLink>
 )}
 
