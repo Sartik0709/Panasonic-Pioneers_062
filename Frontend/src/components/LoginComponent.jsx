@@ -1,4 +1,3 @@
-// src/components/Login.js
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -25,60 +24,76 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form onSubmit={onSubmitHandler} className="space-y-6 lg:w-2/5 sm:w-3/5 p-8 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-gray-800 text-center">Login</h2>
-
-        <div className="space-y-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            autoComplete="email"
-            aria-label="Email address"
-            className="block w-full border-gray-300 rounded-md min-h-9 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            placeholder="Enter your Email"
-            value={user.email}
-            onChange={onChangeHandler}
-          />
+    <div className="h-screen flex flex-col md:flex-row justify-evenly items-center bg-gradient-to-r from-orange-400 to-white p-4">
+      {/* Left Side: Welcome Message and Login Illustration */}
+      <div className="hidden md:flex">
+        <div className="max-w-md mx-auto">
+          <h2 className="text-3xl font-bold text-orange-700 mb-4">Welcome Back!</h2>
+          <p className="text-lg text-gray-800 mb-8">
+            Welcome back! Log in to continue caring for your pets and keep your pets happy and healthy.
+          </p>
+          {/* Placeholder for Login Illustration or Logo */}
+          <div className="flex justify-center mb-8">
+            <img src="https://picjj.com/images/2024/06/14/W67Kbe.png" alt="Login Illustration" className="w-40 h-40 object-cover rounded-full shadow-md" />
+          </div>
         </div>
+      </div>
 
-        <div className="space-y-4">
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            autoComplete="current-password"
-            aria-label="Password"
-            className="block w-full border-gray-300 rounded-md min-h-9 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            placeholder="Enter Your Password"
-            value={user.password}
-            onChange={onChangeHandler}
-          />
-        </div>
+      {/* Right Side: Login Form */}
+      <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+        <h2 className="text-3xl font-bold text-center text-orange-700 mb-4">Login</h2>
+        <form onSubmit={onSubmitHandler} className="space-y-4">
+          <div className="space-y-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-900">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autoComplete="email"
+              className="block w-full border-gray-300 rounded-md min-h-9 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter your Email"
+              value={user.email}
+              onChange={onChangeHandler}
+              required
+            />
+          </div>
 
-        <div className="flex flex-col gap-6">
-          <button
-            type="submit"
-            className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+          <div className="space-y-4">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-900">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autoComplete="current-password"
+              className="block w-full border-gray-300 rounded-md min-h-9 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter Your Password"
+              value={user.password}
+              onChange={onChangeHandler}
+              required
+            />
+          </div>
+
+          <div className="flex justify-between items-center">
+            <button
+              type="submit"
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-orange-700 bg-orange-200 hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Login
+            </button>
+          </div>
+
+          <p
+            onClick={handleForgot}
+            className="text-sm text-center text-orange-700 cursor-pointer mt-4"
           >
-            Login
-          </button>
-        </div>
+            Forgot password?
+          </p>
 
-        <p
-          onClick={handleForgot}
-          className="flex items-center justify-center text-l text-red-500 cursor-pointer"
-        >
-          Forgot password
-        </p>
-
-        {error && <div className="text-red-600 text-center mt-4">{error}</div>}
-      </form>
+          {error && <div className="text-red-600 text-sm">{error}</div>}
+        </form>
+      </div>
     </div>
   );
-}
+};
 
 export default Login;
