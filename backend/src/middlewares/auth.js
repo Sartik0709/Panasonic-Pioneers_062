@@ -1,30 +1,32 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
+import { config } from "dotenv";
 
-const auth = async (req, res, next) => {
-    try {
-        //Extract the JWT token from the authorization header
-        const token = req.headers.authorization.split(" ")[1];
+config();
 
-        //Check if token is missing
-        if (!token) {
-            return res.status(401).json({ message: "Token is not provided. Please provide a token." });
-        }
-
-        //Verify the token
-        jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
-            console.log("decode :", decoded)
-            if (err) {
-                return res.status(403).json({ message: "Invalid or expired token." });
+export const auth=(role)=>{
+    
+    return async(req,res,next)=>{
+        try{
+         if(req.headers.authorization===undefined){
+              return res.status(203).send('token required');
+         }
+         const token=req.headers.authorization.split(" ")[1];
+         
+         jwt.verify(token,process.env.JWT_SEACRET,(err,decode)=>{
+            if(err)console.log(err);
+          
+            req.session.user=decode;
+            req.user=decode;
+            if(role.includes(decode.role)){
+                next();
             }
-
-            //Set the user information in the request object
-            req.user = decoded;
-            next();
-        });
-    } catch (error) {
-        console.error("Error in auth middleware:", error);
-        return res.status(500).json({ message: "Internal Server Error" });
+            else{
+              return res.status(403).send("User does not access to this operation")
+            }
+          
+         })
+        }catch(err){
+            console.log(err);
+        }
     }
-};
-
-export default auth;
+}
