@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Button, Container } from 'react-bootstrap';
-import './PetsList.css'; // Ensure this is the correct path to your CSS file
+import './PetsList.css'; 
 
 const PetsList = () => {
   const [pets, setPets] = useState([]);

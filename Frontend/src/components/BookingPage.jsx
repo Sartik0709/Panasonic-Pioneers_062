@@ -1,49 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
 import './BookingPage.css';
 
-const stripePromise = loadStripe('your-publishable-key-here');
+// const stripePromise = loadStripe('your-publishable-key-here');
 
-const services = [
-  {
-    id: 1,
-    name: 'Dog Walking',
-    provider: 'John Doe',
-    rating: 4.5,
-    reviews: 12,
-  },
-  {
-    id: 2,
-    name: 'Pet Sitting',
-    provider: 'Jane Smith',
-    rating: 4.8,
-    reviews: 20,
-  },
-  {
-    id: 3,
-    name: 'Grooming',
-    provider: 'Emily Davis',
-    rating: 4.7,
-    reviews: 15,
-  },
-  {
-    id: 4,
-    name: 'Veterinary Services',
-    provider: 'Dr. Alice Brown',
-    rating: 4.9,
-    reviews: 22,
-  },
-  {
-    id: 5,
-    name: 'Pet Training',
-    provider: 'Mark Wilson',
-    rating: 4.6,
-    reviews: 18,
-  },
-];
+// const services = [
+//   {
+//     id: 1,
+//     name: 'Dog Walking',
+//     provider: 'John Doe',
+//     rating: 4.5,
+//     reviews: 12,
+//   },
+//   {
+//     id: 2,
+//     name: 'Pet Sitting',
+//     provider: 'Jane Smith',
+//     rating: 4.8,
+//     reviews: 20,
+//   },
+//   {
+//     id: 3,
+//     name: 'Grooming',
+//     provider: 'Emily Davis',
+//     rating: 4.7,
+//     reviews: 15,
+//   },
+//   {
+//     id: 4,
+//     name: 'Veterinary Services',
+//     provider: 'Dr. Alice Brown',
+//     rating: 4.9,
+//     reviews: 22,
+//   },
+//   {
+//     id: 5,
+//     name: 'Pet Training',
+//     provider: 'Mark Wilson',
+//     rating: 4.6,
+//     reviews: 18,
+//   },
+// ];
 
 const BookingPage = () => {
   const { serviceId } = useParams();

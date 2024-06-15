@@ -8,6 +8,7 @@ import cors from 'cors'
 import MongoStore from 'connect-mongo';
 import { servicePRovider } from './src/routes/serviceProvider.js';
 import { auth } from './src/middlewares/auth.js';
+import BookingRouter from './src/routes/bookingRouter.js';
 
 
 
@@ -41,6 +42,8 @@ app.use("/user",userRoute);
 app.use("",pet)
 
 app.use("",servicePRovider)
+
+app.use("",BookingRouter);
 
 app.listen(port,async()=>{
     try{
