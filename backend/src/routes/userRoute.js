@@ -4,6 +4,10 @@ import  jwt from 'jsonwebtoken'
 import { config } from "dotenv";
 import { USER } from "../models/userSchema.js";
 import { BLOCK } from "../models/blocklist.js";
+import crypto from 'crypto';
+import { sendEmail } from '../controllers/email.js';
+
+export const userRouter = Router();
 
 config();
 
@@ -19,6 +23,29 @@ userRoute.get("/all",async(req,res)=>{
         res.status(500).send("error :" ,err.message)
     }
 })
+const otpStore = {};
+
+// Helper function to generate OTP
+const generateOTP = () => {
+  const hex = crypto.randomBytes(3).toString('hex');
+  const otp = parseInt(hex, 16);
+  return otp % 1000000;
+};
+
+// Helper function to set OTP with expiration
+const setOTP = (email, otp) => {
+  otpStore[email] = {
+    otp,
+    expiresAt: Date.now() + 5 * 60 * 1000 // 5 minutes from now
+  };
+
+  // Set timeout to delete OTP after 5 minutes
+  setTimeout(() => {
+    if (otpStore[email] && otpStore[email].expiresAt <= Date.now()) {
+      delete otpStore[email];
+    }
+  }, 5 * 60 * 1000);
+};
 
 //register user/register
 userRoute.post('/register',async(req,res)=>{
@@ -109,3 +136,65 @@ userRoute.delete("/:id",async(req,res)=>{
         res.json({message : error.message}) 
     }
 });
+
+
+
+
+userRoute.post("/forgotPassword", async (req, res) => {
+    const { email } = req.body;
+    try {
+      const user = await USER.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ message: "User with this email does not exist" });
+      }
+  
+      const otp = generateOTP();
+      setOTP(email, otp);
+  
+      await sendEmail(email, 'Your Password Reset OTP', `Your OTP code is ${otp}`);
+  
+      res.status(200).json({ message: "OTP sent to email" });
+    } catch (error) {
+      console.log("Error while generating OTP:", error.message);
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+  // Verify OTP
+  userRoute.post("/verifyOTP", async (req, res) => {
+    const { email, otp } = req.body;
+    try {
+      const storedOTP = otpStore[email];
+      if (!storedOTP || storedOTP.otp !== otp || storedOTP.expiresAt < Date.now()) {
+        return res.status(400).json({ message: 'Invalid or expired OTP' });
+      }
+  
+      // OTP is correct, clear it from store
+      delete otpStore[email];
+      res.status(200).json({ message: "OTP verified successfully" });
+    } catch (error) {
+      console.log("Error while verifying OTP:", error.message);
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+  // Reset password
+  userRoute.post("/resetPassword", async (req, res) => {
+    const { email, newPassword } = req.body;
+    try {
+      const user = await USER.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ message: "User with this email does not exist" });
+      }
+  
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedPassword;
+      await user.save();
+  
+      res.status(200).json({ message: "Password reset successfully" });
+    } catch (error) {
+      console.log("Error while resetting password:", error.message);
+      res.status(500).json({ message: error.message });
+    }
+  });
+  

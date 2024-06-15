@@ -170,6 +170,7 @@ import { petModel } from "../models/petsSchema.js";
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import { auth } from "../middlewares/auth.js";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
