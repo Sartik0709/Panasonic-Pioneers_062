@@ -20,7 +20,7 @@ export const pet=Router();
 
 // pet.use(express.static(process.cwd(),'/upload'))
 
-pet.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+// pet.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 //--------------------------------------------------------//
 
