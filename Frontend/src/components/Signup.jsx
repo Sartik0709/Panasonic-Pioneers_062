@@ -37,7 +37,7 @@ const Signup = () => {
   return (
     <div className="h-screen flex justify-center items-center bg-gradient-to-r from-orange-200 to-white">
       {/* Left Side: Welcome Message and Pet Imagery */}
-      <div className="flex">
+      <div className="flex ">
         <div className="max-w-md mx-auto">
           <h2 className="text-3xl font-bold text-orange-700 mb-4">Welcome to Our Pet Family!</h2>
           <p className="text-lg text-gray-800 mb-8">
@@ -62,7 +62,7 @@ const Signup = () => {
               name="userName"
               id="username"
               autoComplete="username"
-              className="input"
+              className="block w-full border-gray-300 rounded-md min-h-9 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="Enter your username"
               value={user.userName}
               onChange={onChangeHandler}
@@ -76,7 +76,7 @@ const Signup = () => {
               id="email"
               name="email"
               autoComplete="email"
-              className="input"
+              className="block w-full border-gray-300 rounded-md min-h-9 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="Enter your Email"
               value={user.email}
               onChange={onChangeHandler}
@@ -90,7 +90,7 @@ const Signup = () => {
               name="password"
               id="password"
               autoComplete="current-password"
-              className="input"
+              className="block w-full border-gray-300 rounded-md min-h-9 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               placeholder="Enter Your Password"
               value={user.password}
               onChange={onChangeHandler}
@@ -103,7 +103,7 @@ const Signup = () => {
               id="role"
               name="role"
               autoComplete="role-name"
-              className="input"
+              className="block w-full border-gray-300 rounded-md min-h-9 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={user.role}
               onChange={onChangeHandler}
             >
@@ -118,13 +118,13 @@ const Signup = () => {
           <div className="flex justify-between items-center">
             <button
               onClick={handleClick}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-orange-700 bg-orange-200 hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-orange-700 bg-orange-200 hover:bg-orange-300"
             >
               Already have an account
             </button>
             <button
               type="submit"
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-orange-700 bg-orange-200 hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-orange-700 bg-orange-200 hover:bg-orange-300 "
             >
               Register User
             </button>
