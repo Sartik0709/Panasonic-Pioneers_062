@@ -1,10 +1,10 @@
-.App {
+.PetApp {
     text-align: center;
     padding: 20px;
   }
   
 
-  .App>p{
+  .PetApp>p{
     font-size: 30px;
     font-weight: 900;
     background: linear-gradient(90deg, #ff7e5f, #feb47b);
@@ -24,18 +24,18 @@
     background: #f9f9f9;
   }
   
-  .form-group {
+  .PetApp .form-group {
     margin-bottom: 15px;
     text-align: left;
   }
   
-  .form-group label {
+  .PetApp .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
   }
   
-  .form-group input,
+  .PetApp .form-group input,
   .form-group select,
   .form-group textarea {
     width: 100%;
@@ -45,7 +45,7 @@
     box-sizing: border-box;
   }
   
-  button {
+  .PetApp button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -83,7 +83,7 @@
     background: rgba(0, 0, 0, 0.75);
   }
   
-  button:hover {
+  .PetApp button:hover {
     animation: anim1 0.3s ease-in forwards;
   }
   

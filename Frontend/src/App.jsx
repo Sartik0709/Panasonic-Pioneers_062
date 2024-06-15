@@ -10,7 +10,6 @@ import ServicePage from "./components/Services";
 
 import HomePage from "./pages/HomePage";
 import Login from "./components/LoginComponent";
-import Navbar from "./components/Navbar";
 import { Stack } from "@chakra-ui/react";
 import Adoptpetpage from "./pages/AdpotPetPage";
 // import Footer from './components/Footer '

@@ -65,7 +65,7 @@ function Petform() {
   };
 
   return (
-    <div className="App">
+    <div className="PetApp">
       <p>Pet Details Form</p>
       <form onSubmit={handleSubmit} className="pet-form">
         <div className="form-group">

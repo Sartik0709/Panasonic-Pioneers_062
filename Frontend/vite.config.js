@@ -7,19 +7,5 @@ export default defineConfig({
 })
 
 
-<<<<<<< HEAD
-=======
 
-// vite.config.js
-// export default {
-//   server: {
-//     proxy: {
-//       '/api': {
-//         target: 'https://panasonic-pioneers-062.onrender.com',
-//         changeOrigin: true,
-//         rewrite: path => path.replace(/^\/api/, '')
-//       }
-//     }
-//   }
-// }
->>>>>>> f96e0e3ce3295b10e655e1694d3c5c31561a093c
+
