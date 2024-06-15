@@ -1,11 +1,9 @@
 import express from 'express'
 import {config} from 'dotenv'
 import { connecttodb } from './src/config/db.js';
-import  session from 'express-session';
 import { pet } from './src/routes/petRoute.js';
 import { userRoute } from './src/routes/userRoute.js';
 import cors from 'cors'
-import MongoStore from 'connect-mongo';
 import { servicePRovider } from './src/routes/serviceProvider.js';
 import { auth } from './src/middlewares/auth.js';
 
