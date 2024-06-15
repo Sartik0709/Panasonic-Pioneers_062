@@ -1,50 +1,58 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
-import '../Petform.css'
+import '../Petform.css';
+import axios from 'axios';
 
 Modal.setAppElement('#root');
 
 function App() {
   const [formData, setFormData] = useState({
-    petName: '',
-    petType: '',
+    name: '',
+    type: '',
     breed: '',
     age: '',
+    gender: '',
     description: '',
     healthStatus: '',
-    photo: null,
+    ownerName: '',
+    ownerContact: '',
+    ownerCity: '',
+    photos: [],
   });
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: files ? files[0] : value,
-    });
+    if (files) {
+      setFormData({
+        ...formData,
+        [name]: Array.from(files),
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
     for (const key in formData) {
-      data.append(key, formData[key]);
+      if (key === 'photos') {
+        formData.photos.forEach((photo, index) => {
+          data.append('photos', photo);
+        });
+      } else {
+        data.append(key, formData[key]);
+      }
     }
 
     try {
-      const response = await fetch('https://panasonic-pioneers-062.onrender.com/pets/add', {
-        method: 'POST',
-        body: data,
-        headers: {
-          'Accept': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
+      const response = await axios.post('https://panasonic-pioneers-062.onrender.com/pets/add', data);
+      console.log(response);
       setModalIsOpen(true);
     } catch (error) {
       setErrorMessage('Failed to submit the form. Please try again.');
@@ -58,14 +66,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Pet Details Form</h1>
+      <p>Pet Details Form</p>
       <form onSubmit={handleSubmit} className="pet-form">
         <div className="form-group">
           <label>Pet Name</label>
           <input
             type="text"
-            name="petName"
-            value={formData.petName}
+            name="name"
+            value={formData.name}
             onChange={handleChange}
             required
           />
@@ -73,16 +81,16 @@ function App() {
         <div className="form-group">
           <label>Type</label>
           <select
-            name="petType"
-            value={formData.petType}
+            name="type"
+            value={formData.type}
             onChange={handleChange}
             required
           >
             <option value="">Select type</option>
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="rabbit">Rabbit</option>
-            <option value="rodent">Rodent</option>
+            <option value="dogs">Dog</option>
+            <option value="cats">Cat</option>
+            <option value="rabbits">Rabbit</option>
+            <option value="rodents">Rodent</option>
           </select>
         </div>
         <div className="form-group">
@@ -106,6 +114,19 @@ function App() {
           />
         </div>
         <div className="form-group">
+          <label>Gender</label>
+          <select
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div className="form-group">
           <label>Description</label>
           <textarea
             name="description"
@@ -125,10 +146,41 @@ function App() {
           />
         </div>
         <div className="form-group">
-          <label>Photo</label>
+          <label>Owner Name</label>
+          <input
+            type="text"
+            name="ownerName"
+            value={formData.ownerName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Owner Contact</label>
+          <input
+            type="tel"
+            name="ownerContact"
+            value={formData.ownerContact}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Owner City</label>
+          <input
+            type="text"
+            name="ownerCity"
+            value={formData.ownerCity}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Photos</label>
           <input
             type="file"
-            name="photo"
+            name="photos"
+            multiple
             onChange={handleChange}
             required
           />
