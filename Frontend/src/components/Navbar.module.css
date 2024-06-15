@@ -1,22 +1,24 @@
 .navbar{
     display: flex;
     justify-content: space-around;
-    background-color: rgba(252, 248, 248, 0.911);
+    align-items: center;
+    background-color: rgb(255, 255, 255);
     z-index: 1;
     position: fixed;
-    top: 1px;
+    top: 0px;
     right: 0px;
     left: 0px;
 }
 
 
 .navbar1{   
-    background-position: center;
-    background-size:cover; 
-    border-radius: 50%;
-    background-image: url(https://picjj.com/images/2024/06/12/Wr0A3R.jpg);
-    width: 100px; 
-    height: 100px;
+    background-position:center;
+    background-size:cover;  
+    background-repeat: no-repeat;
+    /* border:2px solid ;    */
+    background-image:url("https://picjj.com/images/2024/06/14/W6VZCN.jpg");
+    height: 12vh;
+    width:18.5vw;
 }
 
 
@@ -34,9 +36,23 @@
 {
     display: none;
 }
+.Loginbutton{
+    color: white;
+    font-weight: bold;
+    background-color:#fea910;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 6px;
+}
+.Loginbutton:hover{
+    background-color:#fabe4f;
+}
+
 
 /* media quey for mobile screen */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 930px) {
     .navbar {
         
         flex-direction: row;
@@ -49,5 +65,13 @@
     }
     .navbar3{
         display: block;
+    }
+    .Loginbutton{
+       display:none;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .navbar1{ 
+        width: 40vw;
     }
 }
