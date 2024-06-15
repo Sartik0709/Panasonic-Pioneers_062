@@ -5,7 +5,7 @@ import axios from 'axios';
 
 Modal.setAppElement('#root');
 
-function App() {
+function Petform() {
   const [formData, setFormData] = useState({
     name: '',
     type: '',
@@ -203,4 +203,4 @@ function App() {
   );
 }
 
-export default App;
+export default Petform;

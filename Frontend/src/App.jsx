@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 import './App.css'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Petform from './components/Petform'
-=======
+
 import { Route, Routes } from "react-router";
 import "./App.css";
 import ServicePage from "./components/Services";
@@ -17,16 +17,16 @@ import Adoptpetpage from "./pages/AdpotPetPage";
 // import Signup from "./components/Signup";
 // import Loginpage from "./pages/Loginpage";
 import Signup from "./components/Signup";
->>>>>>> f96e0e3ce3295b10e655e1694d3c5c31561a093c
+
 
 function App() {
   return (
-<<<<<<< HEAD
-     <>
-    <Petform/>
-     </>
-  )
-=======
+
+    //  <>
+    // <Petform/>
+    //  </>
+  
+
     <>
       <Stack spacing={20}>
         <Navbar />
@@ -43,7 +43,7 @@ function App() {
       </Stack>
     </>
   );
->>>>>>> f96e0e3ce3295b10e655e1694d3c5c31561a093c
+
 }
 
 export default App;
