@@ -67,24 +67,22 @@ pet.get('/pets/:id', async (req, res) => {
   
   
  //add new pet
-pet.post('/pets/add', upload.single('photos'), async (req, res) => {
-  const {type,userId,name,breed,age,gender,description,healthStatus,ownerName,ownerContact,ownerCity,photos} = req.body;
-  const id = req.user;
+ pet.post('/pets/add', upload.single('photos'), async (req, res) => {
+  const newPet = req.body;
   if (req.file) {
     const filePath = path.posix.join('uploads', req.file.filename);
     newPet.photos = [filePath.replace(/\\/g, '/')];
     console.log(newPet.photos[0]);
   }
   try {
-    const pet = await petModel.create({type,userId:id,name,breed,age,gender,description,healthStatus,ownerName,ownerContact,ownerCity,photos});
-    res.status(201).json({pet:pet});
+    const pet = await petModel.create(newPet);
+    res.status(201).json(pet);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 });
   
-//pet update by id
-  pet.patch('/pets/update/:id', async (req, res) => {
+  pet.put('/pets/update/:id', async (req, res) => {
     const { id } = req.params;
     const updatedPet = req.body;
     try {
@@ -94,9 +92,40 @@ pet.post('/pets/add', upload.single('photos'), async (req, res) => {
       }
       res.json(pet);
     } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  });
+      res.status(400).json({ message: error.message });
+  }
+});
+
+// pet.post('/pets/add', upload.single('photos'), async (req, res) => {
+//   const {type,userId,name,breed,age,gender,description,healthStatus,ownerName,ownerContact,ownerCity,photos} = req.body;
+//   const id = req.user;
+//   if (req.file) {
+//     const filePath = path.posix.join('uploads', req.file.filename);
+//     newPet.photos = [filePath.replace(/\\/g, '/')];
+//     console.log(newPet.photos[0]);
+//   }
+//   try {
+//     const pet = await petModel.create({type,userId:id,name,breed,age,gender,description,healthStatus,ownerName,ownerContact,ownerCity,photos});
+//     res.status(201).json({pet:pet});
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
+  
+//pet update by id
+  // pet.patch('/pets/update/:id', async (req, res) => {
+  //   const { id } = req.params;
+  //   const updatedPet = req.body;
+  //   try {
+  //     const pet = await petModel.findByIdAndUpdate(id, updatedPet, { new: true });
+  //     if (!pet) {
+  //       return res.status(404).json({ message: 'Pet not found' });
+  //     }
+  //     res.json(pet);
+  //   } catch (error) {
+  //     res.status(400).json({ message: error.message });
+  //   }
+  // });
   
 
   //delete
