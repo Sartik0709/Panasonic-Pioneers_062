@@ -138,6 +138,19 @@ userRoute.delete("/:id",async(req,res)=>{
 });
 
 
+//getUserById  user/:id
+userRoute.get("/:id",async(req,res)=>{
+  const {id} = req.params;
+  console.log(req.params);
+  try {
+     const user = await USER.findById({_id: id});
+     res.status(200).json({message : "success", user:user})
+  } catch (error) {
+      console.log("error while detecting user by id not found");
+      res.json({message : error.message}) 
+  }
+});
+
 
 
 userRoute.post("/forgotPassword", async (req, res) => {

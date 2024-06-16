@@ -46,6 +46,7 @@ const ServicePage = () => {
           <Button variant="primary" style={{ color: 'white', backgroundColor: '#f1b505', marginTop:"10px", padding:"10px", borderRadius:"10px" }}>Book Session</Button>
         </Container>
       </div>
+      <h1 className="intro-heading">Exceptional Pet Care Services</h1>
       <Container className="service-list-container">
         {services.map((service) => (
           <Card key={service._id} className="service-card">

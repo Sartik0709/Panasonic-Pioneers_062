@@ -1,33 +1,37 @@
 import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema({
-  service: {
+  serviceId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Service", // Reference to Service model
+    ref: "serviceProvider", // Reference serviceProvider
     required: true,
   },
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Reference to User model (customer)
-    required: true,
-  },
-  provider: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Reference to User model (service provider)
-  },
-  bookedAt: {
-    type: Date,
-    default: Date.now,
+    ref: "users", // Reference users (customer)
+    required: true, // Assuming userId is required
   },
   bookedDateTime: {
     type: Date,
     required: true,
   },
-  status: {
+  cardNumber: {
     type: String,
-    enum: ["pending", "confirmed", "cancelled"],
-    default: "confirmed",
+    required: function() { return this.paymentMethod === 'card'; }
   },
+  upiId: {
+    type: String,
+    required: function() { return this.paymentMethod === 'upi'; }
+  },
+  paymentMethod: {
+    type: String,
+    enum: ["card", "upi"],
+    required: true
+  },
+  totalCharge: {
+    type: Number,
+    required: true
+  }
 });
 
 export const BookingModel = mongoose.model("Booking", bookingSchema);
