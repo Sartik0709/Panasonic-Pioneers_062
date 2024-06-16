@@ -10,6 +10,7 @@ import ServicePage from './pages/ServicePage';
 import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
 import Register from './components/Register';
+import { AdminPage } from './pages/AdminPage';
 
 
 function App() {
@@ -17,9 +18,9 @@ function App() {
     <>
       <Stack spacing={20}>
         <Navbar />
-    
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/adminPage" element={<AdminPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/Register" element={<Register/>} />
           <Route path="/services"  element={<ServicePage />}/>
