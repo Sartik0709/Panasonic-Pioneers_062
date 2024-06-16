@@ -64,7 +64,7 @@ userRoute.post('/register',async(req,res)=>{
             //update hash password to password filed
             const user = new USER({userName, email, password : result, role});
             await user.save();
-            return res.status(201).json({message :"user registered successfully", user : user})
+            return res.status(201).json({message :"user registered successfully!!!", user : user})
         });   
     } catch (error) {
         console.log("error while getUserRegister request");
