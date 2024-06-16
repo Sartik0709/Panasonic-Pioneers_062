@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { users, isLoading, error } = useSelector(state => state.loginData);
-
+ 
   console.log("Login users:", users); // Log users from store
 
   const onChangeHandler = (e) => {
@@ -31,9 +31,15 @@ const Login = () => {
         }
       });
       console.log("response data:", response.data); // Log the response data
-      dispatch({ type: LOGIN_SUCCESS, payload: { user: response.data } });
+      dispatch({ type: LOGIN_SUCCESS, payload: { user: response.data.user } });
       setUser({email: "", password: ""});
-      navigate('/home');
+      localStorage.setItem("UserName",JSON.stringify(response.data.user.userName))
+      // console.log("role :",response.data.user.role);
+      if(response.data.user.role === 'Admin'){
+        navigate('/adminPage');
+      }else{
+        navigate('/home');
+      }
     } catch (error) {
       dispatch({ type: LOGIN_ERROR, payload: { error: error.message } });
       alert("error :",error.message);

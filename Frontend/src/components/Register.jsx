@@ -20,7 +20,7 @@ const Register = () => {
 
   //already have an account
   const handleClick=()=>{
-    navigate('login');
+    navigate('/login');
   }
   const registerUserHandler = useCallback(async (e) => {
     e.preventDefault();
@@ -118,7 +118,7 @@ const Register = () => {
               <option value="PetCareProvider">Provide pet care service</option>
               <option value="Shelter">Animal Shelter</option>
               <option value="Customer">Pet Enthusiast</option>
-              <option value="Admin">Admin</option>
+              <option value="admin">Admin</option>
             </select>
           </div>
 
