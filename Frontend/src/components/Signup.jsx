@@ -18,7 +18,7 @@ const Signup = () => {
   const registerUser = useCallback(async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post("https://panasonic-pioneers-062-3.onrender.com/user/register", user, {
+      const response = await axios.post("https://panasonic-pioneers-062.onrender.com/user/register", user, {
         headers: {
           'Content-Type': 'application/json'
         }

@@ -15,7 +15,7 @@ import About from './pages/About';
 function App() {
   return (
     <>
-      <Stack spacing={20}>
+      <Stack spacing={15}>
         <Navbar />
     
         <Routes>
