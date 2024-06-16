@@ -5,11 +5,11 @@ import HomePage from "./pages/HomePage";
 import Login from "./components/LoginComponent";
 import { Stack } from "@chakra-ui/react";
 import Adoptpetpage from "./pages/AdpotPetPage";
-import Signup from "./components/Signup";
 import BookingPage from './components/BookingPage';
 import ServicePage from './pages/ServicePage';
 import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
+import Register from './components/Register';
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/Register" element={<Signup/>} />
+          <Route path="/Register" element={<Register/>} />
           <Route path="/services"  element={<ServicePage />}/>
           <Route path="/servicePaymentPage" element={<ServicePayment />} />
           <Route path="/booking/:serviceId" element={<BookingPage />} />

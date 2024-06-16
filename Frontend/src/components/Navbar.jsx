@@ -1,19 +1,18 @@
 import {  Link, NavLink } from 'react-router-dom'
 import Styles from './Navbar.module.css'
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../redux/authSlice';
+// import { useSelector } from 'react-redux';
 import { useState } from 'react';
 
 const Navbar = () => {
 
-  const { isAuthenticated } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  // const { isAuthenticated } = useSelector((state) => state.auth);
+  // const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const onLogoutHandler = () => {
-    dispatch(logout());
-    console.log("logout request");
-  };
+  // const onLogoutHandler = () => {
+  //   // dispatch(logout());
+  //   console.log("logout request");
+  // };
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -52,7 +51,7 @@ const Navbar = () => {
           >
             About
           </NavLink>
-          {isAuthenticated ? (
+          {/* {isAuthenticated ? (
             <button className={Styles.Loginbutton} onClick={onLogoutHandler}>
               Logout
             </button>
@@ -60,7 +59,10 @@ const Navbar = () => {
             <NavLink className={Styles.Loginbutton} to="/Register">
               LOGIN
             </NavLink>
-          )}
+          )} */}
+             <NavLink className={Styles.Loginbutton} to="/Register">
+              LOGIN
+            </NavLink>
         </div>
         <div className={Styles.navbar3} onClick={handleMenuToggle}>
         </div>
