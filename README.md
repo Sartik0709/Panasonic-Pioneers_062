@@ -70,6 +70,7 @@ Include screenshots as necessary.
 
 ## Credentials
 Username: user
+
 Password: password123
 
 ## APIs Used
