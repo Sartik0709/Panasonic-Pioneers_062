@@ -2,10 +2,10 @@
 
 
 ## Introduction
-Welcome to PetPals, a website dedicated to connecting pet lovers and owners with valuable resources, information, and a community of like-minded individuals.
+Welcome to PetPals, a clone of the Pet Adoption Platform. This website is designed to facilitate the adoption of pets, such as dogs and cats, from shelters or rescue organizations. The platform serves as a digital marketplace where potential adopters can browse and select pets, shelters can list available pets, and donors can contribute to support animal welfare.
 
 ## Project Type
-Frontend | Backend | Fullstack
+Fullstack | Frontend | Backend | 
 
 ## Deplolyed App
 Frontend: https://deployed-site.whatever
@@ -25,18 +25,27 @@ Attach a very short video walkthough of all of the features [ 1 - 3 minutes ]
 Attach a very short video walkthough of codebase [ 1 - 5 minutes ]
 
 ## Features
-Pet Adoption:
+
+Pet Adoption: Browse through profiles of pets available for adoption from local shelters and rescues.
 
 Service Providers: Discover listings of pet groomers, trainers, veterinarians, and other pet service providers in your area.
 
 Pet Care Tips: Access articles and guides on pet care, grooming, training, and health.
-
-Community Forum: Engage with other users in discussions, share stories, ask questions, and seek advice.
-
-Events: Stay updated on pet-related events in your area, including adoption drives, workshops, and more.
+ 
 
 ## design decisions or assumptions
-List your design desissions & assumptions
+1 ) Modular Architecture:
+The project is divided into modular components to ensure scalability and maintainability.
+Frontend and backend are separated to allow independent development and deployment.
+
+2 ) Technology Stack:
+Frontend: React.js for a dynamic and responsive user interface.
+Backend: Node.js with Express.js for a robust server-side application.
+Database: MongoDB for database management.
+
+3 ) JSON Web Tokens (JWT) are used for secure authentication and authorization.
+
+4 ) Responsive Design: The application is designed to be responsive, ensuring a seamless experience across devices (desktop, tablet, mobile).
 
 ## Installation & Getting started
 Detailed instructions on how to install, configure, and get the project running. For BE/FS projects, guide the reviewer how to check mongodb schema etc.
