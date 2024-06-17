@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { Card, Button, Container } from 'react-bootstrap';
 import './PetsList.css'; 
-
 const PetsList = () => {
   const [pets, setPets] = useState([]);
   const [filteredPets, setFilteredPets] = useState([]);
@@ -69,6 +67,7 @@ const PetsList = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
+    <>
     <div className="RPetsList-container">
       <div className="RContent">
         <aside className="RSidebar">
@@ -148,6 +147,8 @@ const PetsList = () => {
         </main>
       </div>
     </div>
+    
+    </>
   );
 };
 

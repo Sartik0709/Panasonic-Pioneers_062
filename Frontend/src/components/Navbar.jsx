@@ -2,10 +2,11 @@ import {  Link, NavLink, useNavigate } from 'react-router-dom'
 import Styles from './Navbar.module.css'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
-  const { isAuthenticated } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  // const { isAuthenticated } = useSelector((state) => state.auth);
+  // const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 

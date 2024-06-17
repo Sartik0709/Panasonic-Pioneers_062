@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Card, Button, Container } from 'react-bootstrap';
 import './ServiceList.css';
 import { useNavigate } from 'react-router';
+import PetpalVideo from '../components/PetpalVideo';
 
 const ServicePage = () => {
   const [services, setServices] = useState([]);
@@ -37,6 +38,7 @@ const ServicePage = () => {
 
   return (
     <>
+   
       <div className="intro-section">
         <Container >
           <h1>Welcome to Pet Services</h1>
@@ -46,7 +48,7 @@ const ServicePage = () => {
           <Button variant="primary" style={{ color: 'white', backgroundColor: '#f1b505', marginTop:"10px", padding:"10px", borderRadius:"10px" }}>Book Session</Button>
         </Container>
       </div>
-      <h1 className="intro-heading">Exceptional Pet Care Services</h1>
+       <h1 className="intro-heading">Exceptional Pet Care Services</h1>
       <Container className="service-list-container">
         {services.map((service) => (
           <Card key={service._id} className="service-card">

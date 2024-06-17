@@ -1,6 +1,7 @@
-import React from 'react';
+
 
 import { FaCheckCircle } from 'react-icons/fa'
+import PetpalVideo from '../components/PetpalVideo';
 
 const About = () => {
   return (
@@ -31,6 +32,7 @@ const About = () => {
           <img src="https://svgsilh.com/svg/1517090.svg" alt="Happy pet" className="w-2/3 rounded-lg transition-transform transform hover:scale-105" />
         </div>
       </section>
+      <PetpalVideo /> 
       <section className="mt-16 text-center">
   <h2 className="text-3xl font-bold text-orange-500 mb-4">5-Star Petcare Heroes in your neighborhood</h2>
   <ul className="list-none p-0 flex flex-wrap justify-center gap-4">
@@ -57,6 +59,8 @@ const About = () => {
     </li>
   </ul>
 </section>
+    
+
     </div>
   );
 }

@@ -11,6 +11,8 @@ import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
 import Register from './components/Register';
 import { AdminPage } from './pages/AdminPage';
+import Footer from './components/Footer';
+
 
 
 function App() {
@@ -32,6 +34,7 @@ function App() {
         </Routes>
         
       </Stack>
+      <Footer />
     </>
   );
 
