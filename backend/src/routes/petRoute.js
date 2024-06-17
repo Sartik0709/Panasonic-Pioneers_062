@@ -191,13 +191,20 @@ export const pet = Router();
 
 pet.get('/pets/all', async (req, res) => {
   try {
-    const pets = await petModel.find();
-    res.status(200).json({ pets });
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 6;
+    const skip = (page - 1) * limit;
+
+    const pets = await petModel.find().skip(skip).limit(limit);
+    const total = await petModel.countDocuments();
+
+    res.status(200).json({ pets, total, page, pages: Math.ceil(total / limit) });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
   }
 });
+
 
 pet.get('/pets/:id', async (req, res) => {
   const { id } = req.params;
