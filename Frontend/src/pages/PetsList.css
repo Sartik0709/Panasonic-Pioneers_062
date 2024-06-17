@@ -121,7 +121,6 @@
 
 .RMain-content {
   flex: 1;
-  display: flex;
   flex-wrap: wrap;
   gap: 20px; /* Added gap between cards */
   justify-content: center; /* Center align cards */
@@ -202,4 +201,30 @@
   display: flex;
   gap:20px;
   flex-wrap: wrap;
+}
+
+
+.RPagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.RPagination button {
+  margin: 0 5px;
+  padding: 10px 15px;
+  height: 40px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.RPagination button.RActive {
+  background-color: #0056b3;
+}
+
+.RPagination button:hover:not(.RActive) {
+  background-color: #0056b3;
 }

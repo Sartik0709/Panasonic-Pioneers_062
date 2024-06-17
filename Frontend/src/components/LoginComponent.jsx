@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../redux/authSlice';
 
+
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const { error } = useSelector((state) => state.auth);
@@ -15,6 +16,8 @@ const Login = () => {
 
   const handleForgot = () => {
     console.log("Forgot password button clicked");
+    navigate('/forgot')
+
   };
 
   const onSubmitHandler = async (e) => {

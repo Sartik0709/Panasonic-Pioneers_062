@@ -17,6 +17,9 @@ import Adoptpetpage from "./pages/AdpotPetPage";
 // import Loginpage from "./pages/Loginpage";
 import Signup from "./components/Signup";
 import BookingPage from './components/BookingPage';
+import PaymentPage from './components/PaymentPage';
+import ForgotPassword from './components/ForgotPassword';
+import PasswordReset from './components/PasswordReset';
 
 
 function App() {
@@ -25,7 +28,9 @@ function App() {
     //  <>
     // <Petform/>
     //  </>
-  
+    // <>
+    //  <ForgotPassword />
+    // </>
 
     <>
       <Stack spacing={20}>
@@ -39,6 +44,9 @@ function App() {
           <Route path="/booking/:serviceId" element={<BookingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Adoptpage" element={<Adoptpetpage />} />
+          <Route path="/payment/:petId" element={<PaymentPage />} />
+          <Route path="/forgot" element={<ForgotPassword/>}/>
+          <Route path="/reset" element={<PasswordReset/>} />
         </Routes>
         
       </Stack>
