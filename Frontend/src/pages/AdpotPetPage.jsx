@@ -129,7 +129,7 @@ const PetsList = () => {
           <div className="RPets-grid">
             {filteredPets.map((pet) => (
               <div key={pet._id} className="RPet-card">
-                <img src={`https://panasonic-pioneers-062.onrender.com${pet.photos[0]}`} alt={pet.name} className="RPet-image" />
+                <img src={`https://panasonic-pioneers-062.onrender.com/${pet.photos[0]}`} alt={pet.name} className="RPet-image" />
                 <div className="RPet-details">
                   <h3 className="RPet-name">{pet.name}</h3>
                   <div className="RPet-info">

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
-import '../Petform.css';
 import axios from 'axios';
+import '../Petform.css';
 
 Modal.setAppElement('#root');
 
@@ -21,28 +21,31 @@ function Petform() {
   });
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (files) {
-      setFormData({
-        ...formData,
+      setFormData((prevFormData) => ({
+        ...prevFormData,
         [name]: Array.from(files),
-      });
+      }));
     } else {
-      setFormData({
-        ...formData,
+      setFormData((prevFormData) => ({
+        ...prevFormData,
         [name]: value,
-      });
+      }));
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const data = new FormData();
+
     for (const key in formData) {
       if (key === 'photos') {
-        formData.photos.forEach((photo, index) => {
+        formData.photos.forEach((photo) => {
           data.append('photos', photo);
         });
       } else {
@@ -51,16 +54,20 @@ function Petform() {
     }
 
     try {
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmY5ZjZiODQxNzE5NjRlYTE0NDdlMiIsInJvbGUiOiJTaGVsdGVyIiwiaWF0IjoxNzE4NjEwNzU0LCJleHAiOjE3MTg2OTcxNTR9.f-DzwAYeM5BhEbfUX57JpiCJEKf1fLjA-tYsjYSLcNo'; // Replace with your actual token
       const response = await axios.post('https://panasonic-pioneers-062.onrender.com/pets/add', data, {
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`,
+        },
       });
-      console.log(response);
+      console.log('Pet added successfully:', response.data);
       setModalIsOpen(true);
     } catch (error) {
       setErrorMessage('Failed to submit the form. Please try again.');
-      console.error('There was a problem with the fetch operation:', error);
+      console.error('Error adding pet:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -72,6 +79,7 @@ function Petform() {
     <div className="PetApp">
       <p>Pet Details Form</p>
       <form onSubmit={handleSubmit} className="pet-form">
+        {/* Form fields here */}
         <div className="form-group">
           <label>Pet Name</label>
           <input
@@ -189,8 +197,10 @@ function Petform() {
             required
           />
         </div>
-        <button type="submit">Submit</button>
         {errorMessage && <p className="error">{errorMessage}</p>}
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? 'Submitting...' : 'Submit'}
+        </button>
       </form>
 
       <Modal

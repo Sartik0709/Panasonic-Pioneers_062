@@ -3,7 +3,7 @@ import { config } from "dotenv";
 
 config();
 
-export const auth=(role)=>{
+export const auth=(roles)=>{
     
     return async(req,res,next)=>{
         try{
@@ -11,13 +11,11 @@ export const auth=(role)=>{
               return res.status(203).send('token required');
          }
          const token=req.headers.authorization.split(" ")[1];
-         
          jwt.verify(token,process.env.JWT_SEACRET,(err,decode)=>{
             if(err)console.log(err);
-          
-            req.session.user=decode;
             req.user=decode;
-            if(role.includes(decode.role)){
+            console.log(decode)
+            if(roles.includes(decode.role)){
                 next();
             }
             else{
