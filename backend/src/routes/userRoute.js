@@ -93,6 +93,7 @@ userRoute.post("/login",async(req,res)=>{
         res.json({
             message :"user login successfully",
             user : {
+              id: existUser._id,
               userName : existUser.userName,
               email:existUser.email,
               password : existUser.password,

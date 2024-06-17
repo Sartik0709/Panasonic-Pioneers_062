@@ -1,135 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Container, Card, Button, Form, FormGroup, FormControl, FormLabel } from 'react-bootstrap';
 import axios from 'axios';
-import { FaPhone, FaWhatsapp } from 'react-icons/fa'; // Importing FontAwesome icons
+import { FaPhone, FaWhatsapp } from 'react-icons/fa'; 
 import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css';
 import './ServicePayment.css'; 
 import { useNavigate } from 'react-router';
-
-// const ServicePayment = () => {
-//   const [service, setService] = useState(null);
-//   const [paymentMethod, setPaymentMethod] = useState('card'); 
-//   const [cardNumber, setCardNumber] = useState('');
-//   const [upiId, setUpiId] = useState('');
-//   const [bookDateTime, setBookDateTime] = useState(new Date()); 
-//   const [totalCharge, setTotalCharge] = useState(0);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const fetchServices = async () => {
-//       const serviceId = JSON.parse(localStorage.getItem('BookId'));
-//       try {
-//         const response = await axios.get(`https://panasonic-pioneers-062.onrender.com/service/${serviceId}`);
-//         setService(response.data.provider);
-//         setTotalCharge(response.data.provider.price_hour); // Initialize total charge with price per hour
-//       } catch (err) {
-//         console.log(err.message);
-//       }
-//     };
-
-//     fetchServices();
-//   }, []);
-
-//   const handlePayment = async () => {
-//     const userId = JSON.parse(localStorage.getItem('UserId')); // Assuming you have user ID stored in localStorage
-//     console.log("handle Payment Trigger :", userId);
-//     const bookingData = {
-//       serviceId: service._id,
-//       userId: userId,
-//       bookedDateTime: bookDateTime,
-//       cardNumber: paymentMethod === 'card' ? cardNumber : null,
-//       upiId: paymentMethod === 'upi' ? upiId : null,
-//       paymentMethod: paymentMethod,
-//       totalCharge: totalCharge
-//     };
-
-//     try {
-//       const response = await axios.post('https://panasonic-pioneers-062.onrender.com/booking/add', bookingData);
-
-//       console.log('Booking created successfully:', response.data);
-//       alert("Payment Successfully Completed");
-
-//       // Redirect to services or confirmation page
-//       navigate('/services');
-//     } catch (err) {
-//       console.error('Error creating booking:', err.message);
-//     }
-//   };
-
-//   const handleBookDateTimeChange = (date) => {
-//     setBookDateTime(date);
-//     const hoursBooked = 1;
-//     setTotalCharge(service.price_hour * hoursBooked);
-//   };
-
-//   if (!service) return <p>Loading...</p>;
-
-//   return (
-//     <Container className="service-payment-container">
-//       <div className="payment-process">
-//         <h1>Payment Process</h1>
-//         <Form>
-//           <FormGroup>
-//             <FormLabel>Select Payment Method:</FormLabel>
-//             <FormControl as="select" value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
-//               <option value="card">Credit Card</option>
-//               <option value="upi">UPI ID</option>
-//             </FormControl>
-//           </FormGroup>
-
-//           {paymentMethod === 'card' && (
-//             <FormGroup>
-//               <FormLabel>Enter Card Number:</FormLabel>
-//               <FormControl placeholder='Enter Card Number' type="text" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} />
-//             </FormGroup>
-//           )}
-
-//           {paymentMethod === 'upi' && (
-//             <FormGroup>
-//               <FormLabel>Enter UPI ID:</FormLabel>
-//               <FormControl type="text" value={upiId} onChange={(e) => setUpiId(e.target.value)} />
-//             </FormGroup>
-//           )}
-
-//           <FormGroup>
-//             <FormLabel>Select Book Date and Time:</FormLabel>
-//             <DatePicker
-//               selected={bookDateTime}
-//               onChange={handleBookDateTimeChange}
-//               showTimeSelect
-//               timeFormat="HH:mm"
-//               timeIntervals={60}
-//               dateFormat="MMMM d, yyyy HH:mm"
-//               className="form-control"
-//             />
-//           </FormGroup>
-
-//           <FormGroup>
-//             <FormLabel>Total Charge:</FormLabel>
-//             <FormControl type="text" value={`$${totalCharge}`} readOnly />
-//           </FormGroup>
-
-//           <Button onClick={handlePayment} variant="primary" className="payment-button">Proceed to Payment</Button>
-//         </Form>
-//       </div>
-
-//       <Card className="service-info">
-//         <Card.Body>
-//           <Card.Title>{service.name}</Card.Title>
-//           <Card.Text>Services: {service.services}</Card.Text>
-//           <Card.Text>Total Charges: <b>${service.price_hour}</b></Card.Text>
-//           <Card.Text>{service.description}</Card.Text>
-//           <Card.Text>Rating: {service.rating}</Card.Text>
-//         </Card.Body>
-//       </Card>
-//     </Container>
-//   );
-// };
-
-// export default ServicePayment;
-
-
+import { useSelector } from 'react-redux';
 
 const ServicePayment = () => {
   const [service, setService] = useState(null);
@@ -139,6 +16,10 @@ const ServicePayment = () => {
   const [bookDateTime, setBookDateTime] = useState(new Date()); 
   const [totalCharge, setTotalCharge] = useState(0);
   const navigate = useNavigate();
+
+  const { users } = useSelector(state => state.loginData);  //token and userName
+  console.log("from servicePayment Page : ", users.userName);
+  
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -155,12 +36,12 @@ const ServicePayment = () => {
     fetchServices();
   }, []);
 
+  console.log("handle Payment Trigger :",users.role);
   const handlePayment = async () => {
-    const userId = JSON.parse(localStorage.getItem('UserId')); // Assuming you have user ID stored in localStorage
-    console.log("handle Payment Trigger :", userId);
+    console.log("handle Payment Trigger :",users.role);
     const bookingData = {
       serviceId: service._id,
-      userId: userId,
+      userId: users.userName,
       bookedDateTime: bookDateTime,
       cardNumber: paymentMethod === 'card' ? cardNumber : null,
       upiId: paymentMethod === 'upi' ? upiId : null,
@@ -169,10 +50,16 @@ const ServicePayment = () => {
     };
 
     try {
-      const response = await axios.post('https://panasonic-pioneers-062.onrender.com/booking/add', bookingData);
+      const response = await axios.post('https://panasonic-pioneers-062.onrender.com/booking/add', bookingData,
+        { headers: { Authorization: `Bearer ${users.token}` } }
+      );
 
-      console.log('Booking created successfully:', response.data.booking);
-      alert("Payment Successfully Completed");
+      // if(!response){
+      //   return console.log("error : response in booking service" );
+      // }
+
+      console.log('Booking created successfully: not null', response.data.booking);
+      alert(`Hello ${users.userName} Payment Successfully Completed by Email :${users.email}`);
 
       // Redirect to services or confirmation page
       navigate('/services');
