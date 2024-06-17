@@ -1,78 +1,137 @@
 /* Body styles */
 body {
-    background-color: #f0f0f0; 
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Main container for the payment process and service information */
+  background-color: #f0f0f0; 
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main container for the payment process and service information */
+.service-payment-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 3%;
+}
+
+/* Responsive grid for larger screens */
+@media (min-width: 768px) {
   .service-payment-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px;
-    margin-top: 10%;
-  }
-  
-  /* Responsive grid for larger screens */
-  @media (min-width: 768px) {
-    .service-payment-container {
       grid-template-columns: 1fr 1fr; 
       margin-top: 5%;
-    }
   }
-  
-  /* Payment process section */
-  .payment-process {
-    background-color: #ffffff; 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .payment-process h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333333;
-  }
-  
-  .payment-button {
-    width: fit-content;
-    margin-top: 20px;
-    color:white;
-    padding:10px;
-    border-radius: 10px;
-    background-color: #f1b505;
-  }
-  .payment-button:hover{
-background-color: black;
-  }
-  
-  /* Service information section */
-  .service-info {
-    background-color: #f8f9fa; 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .service-info .card-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #333333; /* Dark text color */
-  }
-  
-  .service-info .card-text {
-    margin-bottom: 5px;
-    color: #666666; /* Medium gray text color */
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 767px) {
-    .service-payment-container {
+}
+
+/* Payment process section */
+.payment-process {
+  background-color: #ffffff; 
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.payment-process:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.payment-process h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333333;
+  border-bottom: 2px solid #f1b505;
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #f1b505;
+  box-shadow: 0 0 5px rgba(241, 181, 5, 0.5);
+}
+
+.payment-button {
+  width: fit-content;
+  margin-top: 20px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #f1b505;
+  border: none;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.payment-button:hover {
+  background-color: #e09e04;
+  transform: translateY(-3px);
+}
+
+/* Service information section */
+.service-info {
+  background-color: #ffffff; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-info:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-info .card-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333333; /* Dark text color */
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.service-info .card-text {
+  margin-bottom: 15px;
+  color: #666666; /* Medium gray text color */
+  line-height: 1.5;
+}
+
+/*contact-icons*/
+.contact-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.contact-icon {
+  color: #333333;
+  transition: color 0.3s;
+}
+
+.contact-icon:hover {
+  color: #f1b505;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .service-payment-container {
       grid-template-columns: 1fr; /* Single column layout for mobile */
       margin-top: 20%;
-    }
   }
-  
+}
