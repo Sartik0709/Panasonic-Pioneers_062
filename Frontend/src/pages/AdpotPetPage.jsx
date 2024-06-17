@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for navigation
+import './PetsList.css'; // Custom CSS file
+// import { Card, Button, Container } from 'react-bootstrap';
 import './PetsList.css'; 
+
+
 const PetsList = () => {
   const [pets, setPets] = useState([]);
   const [filteredPets, setFilteredPets] = useState([]);
@@ -11,14 +16,21 @@ const PetsList = () => {
     breed: '',
     ownerCity: '',
   });
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await axios.get('https://panasonic-pioneers-062.onrender.com/pets/all');
+        const response = await axios.get('https://panasonic-pioneers-062.onrender.com/pets/all', {
+          params: { page, limit: 6 }
+        });
         console.log("API Response:", response.data);
         setPets(response.data.pets);
         setFilteredPets(response.data.pets);
+        setTotalPages(response.data.pages);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -27,13 +39,13 @@ const PetsList = () => {
     };
 
     fetchPets();
-  }, []);
+  }, [page]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     const { type, breed, ownerCity } = searchParams;
     console.log("Search Params:", searchParams);
-  
+
     const filtered = pets.filter((pet) => {
       return (
         (type ? (pet.type && pet.type.toLowerCase().includes(type.toLowerCase())) : true) &&
@@ -44,6 +56,12 @@ const PetsList = () => {
     console.log("Filtered Pets:", filtered);
     setFilteredPets(filtered);
   };
+ 
+
+  const handleContactOwner = (ownerContact) => {
+    window.location.href = `mailto:${ownerContact}`;
+  };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,13 +72,12 @@ const PetsList = () => {
     }));
   };
 
-  const handleContactOwner = (ownerContact) => {
-    window.location.href = `mailto:${ownerContact}`;
+  const handlePetSelect = (pet) => {
+    navigate(`/payment/${pet._id}`);
   };
 
-  const handleFavorite = (petId) => {
-    // Handle adding to favorites (e.g., save to local storage or send to backend)
-    alert(`Pet with ID ${petId} added to favorites!`);
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
   };
 
   if (loading) return <p>Loading...</p>;
@@ -114,13 +131,11 @@ const PetsList = () => {
             {filteredPets.map((pet) => (
               <div key={pet._id} className="RPet-card">
                 <img src={`https://panasonic-pioneers-062.onrender.com${pet.photos[0]}`} alt={pet.name} className="RPet-image" />
-                {console.log(`https://panasonic-pioneers-062.onrender.com/${pet.photos[0]}`)}
                 <div className="RPet-details">
                   <h3 className="RPet-name">{pet.name}</h3>
                   <div className="RPet-info">
                     <div><span className="RKey">Type:</span> {pet.type}</div>
                     <div><span className="RKey">Breed:</span> {pet.breed}</div>
-                    <div><span className="RKey">Owner City:</span> {pet.ownerCity}</div>
                     <div><span className="RKey">Age:</span> {pet.age}</div>
                     <div><span className="RKey">Gender:</span> {pet.gender}</div>
                     <div><span className="RKey">Health Status:</span> {pet.healthStatus}</div>
@@ -136,12 +151,23 @@ const PetsList = () => {
                   </button>
                   <button
                     className="RFavorite-button"
-                    onClick={() => handleFavorite(pet._id)}
+                    onClick={() => handlePetSelect(pet)} // Handle adoption click
                   >
-                    Add to Favorites
+                    Adopt pet
                   </button>
                 </div>
               </div>
+            ))}
+          </div>
+          <div className="RPagination">
+            {[...Array(totalPages).keys()].map((num) => (
+              <button
+                key={num + 1}
+                onClick={() => handlePageChange(num + 1)}
+                className={page === num + 1 ? 'RActive' : ''}
+              >
+                {num + 1}
+              </button>
             ))}
           </div>
         </main>

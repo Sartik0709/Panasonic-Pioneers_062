@@ -6,19 +6,23 @@ import Login from "./components/LoginComponent";
 import { Stack } from "@chakra-ui/react";
 import Adoptpetpage from "./pages/AdpotPetPage";
 import BookingPage from './components/BookingPage';
+
+import PaymentPage from './components/PaymentPage';
+import ForgotPassword from './components/ForgotPassword';
+import PasswordReset from './components/PasswordReset';
+
 import ServicePage from './pages/ServicePage';
 import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
 import Register from './components/Register';
 import { AdminPage } from './pages/AdminPage';
-import Footer from './components/Footer';
 
 
 
 function App() {
   return (
     <>
-      <Stack spacing={15}>
+      <Stack spacing={20}>
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -29,12 +33,18 @@ function App() {
           <Route path="/servicePaymentPage" element={<ServicePayment />} />
           <Route path="/booking/:serviceId" element={<BookingPage />} />
           <Route path="/login" element={<Login />} />
+
+          <Route path="/Adoptpage" element={<Adoptpetpage />} />
+          <Route path="/payment/:petId" element={<PaymentPage />} />
+          <Route path="/forgot" element={<ForgotPassword/>}/>
+          <Route path="/reset" element={<PasswordReset/>} />
+
           <Route path="/Adoptpage" element={<Adoptpetpage />} />  
           <Route path="/about" element={<About />} />
+
         </Routes>
         
       </Stack>
-      <Footer />
     </>
   );
 

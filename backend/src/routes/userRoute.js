@@ -177,9 +177,10 @@ userRoute.post("/forgotPassword", async (req, res) => {
   // Verify OTP
   userRoute.post("/verifyOTP", async (req, res) => {
     const { email, otp } = req.body;
+     let newotp=Number(otp);
     try {
       const storedOTP = otpStore[email];
-      if (!storedOTP || storedOTP.otp !== otp || storedOTP.expiresAt < Date.now()) {
+      if (!storedOTP || storedOTP.otp !== newotp || storedOTP.expiresAt < Date.now()) {
         return res.status(400).json({ message: 'Invalid or expired OTP' });
       }
   

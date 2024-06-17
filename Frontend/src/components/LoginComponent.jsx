@@ -4,6 +4,7 @@ import axios from 'axios';
 import { LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS } from "../redux/action/actionTypes";
 import { useNavigate } from "react-router";
 
+
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: ""});
   const navigate = useNavigate();
@@ -16,10 +17,18 @@ const Login = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  //handle Forget
-  const handleForgot=()=>{
-    console.log("forget Password Trigger");
-  }
+
+  const handleForgot = () => {
+    console.log("Forgot password button clicked");
+    navigate('/forgot')
+
+  };
+
+  // //handle Forget
+  // const handleForgot=()=>{
+  //   console.log("forget Password Trigger");
+  // }
+
 
   const onSubmitHandler = useCallback(async (e) => {
     e.preventDefault();
