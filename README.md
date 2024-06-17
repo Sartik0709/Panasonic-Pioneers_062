@@ -1,4 +1,4 @@
-# Project Title:- Panasonic-Pioneers_062
+![image](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/154350660/f489d3c0-3562-4370-95c6-47222790afdd)![image](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/154350660/224a29de-46a3-4d88-8812-c25522176204)![image](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/154350660/083dc3ac-6e0b-44a0-86e6-f9fe6c9bb519)![Screenshot 2024-06-17 231035 1](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/154350660/cbdd9c71-d6b4-4079-a456-5dba1d083681)![Screenshot 2024-06-17 231035 1](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/154350660/73ef6321-0296-4b64-8354-76841f32baf4)# Project Title:- Panasonic-Pioneers_062
 
 
 ## Introduction
@@ -21,8 +21,11 @@ my-app/
 ## Video Walkthrough of the project
 Attach a very short video walkthough of all of the features [ 1 - 3 minutes ]
 
-## Video Walkthrough of the codebase
-Attach a very short video walkthough of codebase [ 1 - 5 minutes ]
+## ScreenShots
+ ![Uploading image.png…]()
+
+
+
 
 ## Features
 
