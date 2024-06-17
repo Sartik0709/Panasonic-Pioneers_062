@@ -18,7 +18,6 @@ const ServicePayment = () => {
   const navigate = useNavigate();
 
   const { users } = useSelector(state => state.loginData);  //token and userName
-  console.log("from servicePayment Page : ", users.userName);
   
 
   useEffect(() => {
@@ -36,9 +35,7 @@ const ServicePayment = () => {
     fetchServices();
   }, []);
 
-  console.log("handle Payment Trigger :",users.role);
   const handlePayment = async () => {
-    console.log("handle Payment Trigger :",users.role);
     const bookingData = {
       serviceId: service._id,
       userId: users.userName,
@@ -53,10 +50,6 @@ const ServicePayment = () => {
       const response = await axios.post('https://panasonic-pioneers-062.onrender.com/booking/add', bookingData,
         { headers: { Authorization: `Bearer ${users.token}` } }
       );
-
-      // if(!response){
-      //   return console.log("error : response in booking service" );
-      // }
 
       console.log('Booking created successfully: not null', response.data.booking);
       alert(`Hello ${users.userName} Payment Successfully Completed by Email :${users.email}`);

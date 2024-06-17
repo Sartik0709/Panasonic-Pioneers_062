@@ -29,8 +29,8 @@ try {
     await booking.save();
 
     // Send confirmation emails
-    await sendEmail('shubham45@gmail.com', 'Booking Confirmation', `Your booking for ${user.userName} on ${booking.bookedDateTime} has been confirmed.`);
-    await sendEmail('shubham45@gmail.com', 'Booking Confirmation', `Your booking for ${provider.name} on ${booking.bookedDateTime} has been confirmed.`);
+    await sendEmail('shubhamkhangar45@gmail.com', 'Booking Confirmation', `Your booking for ${user.userName} on ${booking.bookedDateTime} has been confirmed.`);
+    await sendEmail('shubhamkhangar45@gmail.com', 'Booking Confirmation', `Your booking for ${provider.name} on ${booking.bookedDateTime} has been confirmed.`);
 
     res.status(201).json({ message: 'Booking created successfully',booking:booking });
   } catch (err) {
