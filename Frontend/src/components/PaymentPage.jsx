@@ -8,11 +8,12 @@ const PaymentPage = () => {
   const { petId } = useParams(); // Get petId from URL params
   const [pet, setPet] = useState(null);
   const [showQRCode, setShowQRCode] = useState(false);
+  const [paymentUrl, setPaymentUrl] = useState('');
 
   useEffect(() => {
     const fetchPetDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:9090/pets/${petId}`);
+        const response = await axios.get(`https://panasonic-pioneers-062.onrender.com/pets/${petId}`);
         setPet(response.data[0]); // Assuming response.data is an object with pet details
       } catch (err) {
         console.error('Error fetching pet details:', err);
@@ -22,7 +23,9 @@ const PaymentPage = () => {
   }, [petId]);
 
   const handleProceedPayment = () => {
-    // Logic for handling payment process, e.g., showing QR code or redirecting to payment gateway
+    // Construct the payment URL for PhonePe
+    const phonePeUrl = `https://googlepay.com/pay?amount=${100}&merchantId=${'rakeshgowda495758-2@oksbi'}`;
+    setPaymentUrl(phonePeUrl);
     setShowQRCode(true);
   };
 
@@ -33,7 +36,7 @@ const PaymentPage = () => {
       <h2>Payment Details</h2>
       <div className="pet-details payment-pet-details">
         <div className="pet-image payment-pet-image">
-          <img src={pet.image} alt={pet.name} />
+          <img src={`https://panasonic-pioneers-062.onrender.com/${pet.image}`} alt={pet.name} />
         </div>
         <div className="pet-info payment-pet-info">
           <h3>{pet.name}</h3>
@@ -49,9 +52,7 @@ const PaymentPage = () => {
           </button>
           {showQRCode && (
             <div className="payment-qr-code">
-              {/* Use your QR code component or image here */}
-              <QRCode value={`https://yourpaymentendpoint.com/${petId}`} />
-              <img className="payment-logo" src="https://tse3.mm.bing.net/th?id=OIP.HdLjBRvPsYHlLwQxES1_PwHaEK&pid=Api&P=0&h=180" alt="PhonePe Logo" />
+              <QRCode value={paymentUrl} />
             </div>
           )}
         </div>

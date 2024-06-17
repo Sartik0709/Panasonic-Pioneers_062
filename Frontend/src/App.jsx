@@ -12,13 +12,9 @@ import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
 import Register from './components/Register';
 import { AdminPage } from './pages/AdminPage';
-// import Petform from './components/Petform';
-
-
 
 function App() {
   return (
-
     <>
       <Stack spacing={8}>
         <Box>
@@ -32,7 +28,9 @@ function App() {
           <Route path="/services"  element={<ServicePage />}/>
           <Route path="/servicePaymentPage" element={<ServicePayment />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/Adoptpage" element={<Adoptpetpage />} />  
+          <Route path="/Adoptpage" element={<Adoptpetpage />} />
+          <Route path="/forgot" element={<ForgotPassword/>}/>
+          <Route path="/reset" element={<PasswordReset/>} />
           <Route path="/about" element={<About />} />
         </Routes>
       </Stack>

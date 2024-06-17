@@ -69,7 +69,11 @@ pet.get('/pets/:id', async (req, res) => {
 });
 
 
+
+
+
 pet.post('/pets/add', upload.single('photos'),auth(['Shelter','Customer','Admin','Adopter']), async (req, res) => {
+
   const newPet = req.body;
   if (req.file) {
     const filePath = path.posix.join('uploads', req.file.filename);
