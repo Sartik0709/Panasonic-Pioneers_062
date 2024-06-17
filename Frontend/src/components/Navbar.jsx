@@ -1,19 +1,28 @@
-import { Link, NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../redux/authSlice';
-import { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa'; // Icons for the menu toggle
-import Styles from './Navbar.module.css'; // Import your CSS module
+import {  Link, NavLink, useNavigate } from 'react-router-dom'
+import Styles from './Navbar.module.css'
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
+  // Use default empty object to prevent errors when users is null or undefined
+  const  {users}  = useSelector(state => state.loginData);
+  console.log("navbar :", users);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(!!users);
+  console.log("isAuthenticated :",isAuthenticated);
   const onLogoutHandler = () => {
-    dispatch(logout());
-    console.log("logout request");
+    setIsAuthenticated(false);
+    navigate('/home');
   };
+
+  useEffect(() => {
+    setIsAuthenticated(!!users);
+  }, [users]);
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -56,6 +65,7 @@ const Navbar = () => {
           >
             About
           </NavLink>
+          {/* Logout/Login Switch */}
           {isAuthenticated ? (
             <button className={Styles.Loginbutton} onClick={onLogoutHandler}>
               Logout

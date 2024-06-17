@@ -1,60 +1,66 @@
 import { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import {FETCH_REQUEST, FETCH_SUCCESS,  FETCH_ERROR } from "../redux/action/actionTypes";
+import { useNavigate } from "react-router";
 
-const Signup = () => {
+const Register = () => {
   const [user, setUser] = useState({ userName: "", email: "", password: "", role: "" });
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { users, isLoading, isError } = useSelector(state => state.registerData);
 
+  console.log("Registered users:", users); // Log users from store
+
+  //change handler
   const onChangeHandler = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleClick = () => {
+  //already have an account
+  const handleClick=()=>{
     navigate('/login');
-  };
-
-  const registerUser = useCallback(async (e) => {
+  }
+  const registerUserHandler = useCallback(async (e) => {
+    e.preventDefault();
+    dispatch({ type: FETCH_REQUEST });
     try {
-      e.preventDefault();
       const response = await axios.post("https://panasonic-pioneers-062.onrender.com/user/register", user, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      console.log("Registration successful:", response.data);
+      console.log("response data:", response.data); // Log the response data
+      dispatch({ type: FETCH_SUCCESS, payload: { user: response.data.user } });
       setUser({ userName: "", email: "", password: "", role: "" });
       setError(null);
-      // Redirect user to another page after successful registration
-      navigate('/login');
+      navigate('/login')
+      // alert("success :")
     } catch (error) {
-      console.error("Error while registering:", error.message);
+      dispatch({ type: FETCH_ERROR, payload: { error: error.message } });
       setError(error.message);
+      // alert("success :")
     }
-  }, [user, navigate]);
+  }, [user, dispatch,navigate]);
 
   return (
     <div className="h-screen flex justify-center items-center bg-gradient-to-r from-orange-200 to-white">
-      {/* Left Side: Welcome Message and Pet Imagery */}
-      <div className="flex ">
+      <div className="flex">
         <div className="max-w-md mx-auto">
           <h2 className="text-3xl font-bold text-orange-700 mb-4">Welcome to Our Pet Family!</h2>
           <p className="text-lg text-gray-800 mb-8">
             Join us in creating a loving community for pet enthusiasts and caregivers.
           </p>
-          {/* Placeholder for Pet Imagery or Logo */}
           <div className="flex justify-center mb-8">
             <img src="https://picjj.com/images/2024/06/14/W673NU.jpg" alt="Pet Image" className="w-32 h-32 object-cover rounded-full shadow-md" />
           </div>
-          {/* Additional Content or Images can be added here */}
         </div>
       </div>
 
-      {/* Right Side: Signup Form */}
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
         <h2 className="text-3xl font-bold text-center text-orange-700 mb-4">Join Pet Pal Community!</h2>
-        <form onSubmit={registerUser} className="space-y-4">
+        <form onSubmit={registerUserHandler} className="space-y-4">
           <div className="space-y-4">
             <label htmlFor="username" className="block text-sm font-medium text-gray-900">Username</label>
             <input
@@ -107,11 +113,12 @@ const Signup = () => {
               value={user.role}
               onChange={onChangeHandler}
             >
-              <option value="">Select Role</option>
-              <option value="Adopter">Pet Adopter</option>
-              <option value="PetCareProvider">Pet Care Provider</option>
+              <option value="">Purpose of visit</option>
+              <option value="Adopter">Adopt a pet</option>
+              <option value="PetCareProvider">Provide pet care service</option>
               <option value="Shelter">Animal Shelter</option>
               <option value="Customer">Pet Enthusiast</option>
+              <option value="admin">Admin</option>
             </select>
           </div>
 
@@ -124,12 +131,13 @@ const Signup = () => {
             </button>
             <button
               type="submit"
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-orange-700 bg-orange-200 hover:bg-orange-300 "
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-orange-700 bg-orange-200 hover:bg-orange-300"
             >
-              Register User
+              {isLoading ? 'Registering...' : 'Register User'}
             </button>
           </div>
 
+          {isError && <div className="text-red-600 text-sm">Registration failed. Please try again.</div>}
           {error && <div className="text-red-600 text-sm">{error}</div>}
         </form>
       </div>
@@ -137,4 +145,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;

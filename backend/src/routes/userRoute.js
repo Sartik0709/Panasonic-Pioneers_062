@@ -64,7 +64,7 @@ userRoute.post('/register',async(req,res)=>{
             //update hash password to password filed
             const user = new USER({userName, email, password : result, role});
             await user.save();
-            return res.status(201).json({message :"user registered successfully", user : user})
+            return res.status(201).json({message :"user registered successfully!!!", user : user})
         });   
     } catch (error) {
         console.log("error while getUserRegister request");
@@ -137,6 +137,19 @@ userRoute.delete("/:id",async(req,res)=>{
     }
 });
 
+
+//getUserById  user/:id
+userRoute.get("/:id",async(req,res)=>{
+  const {id} = req.params;
+  console.log(req.params);
+  try {
+     const user = await USER.findById({_id: id});
+     res.status(200).json({message : "success", user:user})
+  } catch (error) {
+      console.log("error while detecting user by id not found");
+      res.json({message : error.message}) 
+  }
+});
 
 
 
