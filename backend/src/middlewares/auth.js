@@ -14,8 +14,6 @@ export const auth=(role)=>{
          
          jwt.verify(token,process.env.JWT_SEACRET,(err,decode)=>{
             if(err)console.log(err);
-          
-            req.session.user=decode;
             req.user=decode;
             if(role.includes(decode.role)){
                 next();

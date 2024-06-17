@@ -3,7 +3,7 @@ import { Provider } from '../models/servideProviderSchema.js';
 import { USER } from '../models/userSchema.js';
 
 export const servicePRovider=Router();
-//get all services
+//get all services 
 servicePRovider.get("/service/all",async(req,res)=>{
    //  const {id}=req.user;
    //  console.log(id)
@@ -16,7 +16,7 @@ servicePRovider.get("/service/all",async(req,res)=>{
      }
 })
 
-//book service
+//add service auth admin
 servicePRovider.post("/service/add",async(req,res)=>{
    //  const {id}=req.user;
    //  console.log(id)
@@ -42,4 +42,16 @@ servicePRovider.get("/service/:id",async(req,res)=>{
      }catch(err){
         res.status(400).send(err.message);
      }
+})
+
+
+//get service by id 
+servicePRovider.delete("/service/:id",async(req,res)=>{
+   const {id}=req.params;
+    try{
+       const provider=await Provider.findByIdAndDelete({_id:id}); 
+       res.status(201).send("Services Has Been Completed and Closed")
+    }catch(err){
+       res.status(400).send(err.message);
+    }
 })

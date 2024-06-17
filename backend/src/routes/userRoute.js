@@ -92,8 +92,13 @@ userRoute.post("/login",async(req,res)=>{
         //send response
         res.json({
             message :"user login successfully",
-            token : token,
-            user : existUser
+            user : {
+              userName : existUser.userName,
+              email:existUser.email,
+              password : existUser.password,
+              role : existUser.role,
+              token : token
+            }
         });
     } 
     catch (error) {
