@@ -12,8 +12,15 @@ import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
 import Register from './components/Register';
 import { AdminPage } from './pages/AdminPage';
+import { useSelector } from 'react-redux';
+
+
 
 function App() {
+
+  const { users } = useSelector(state => state.loginData);  //login data 
+  console.log("from servicePayment Page : ", users);
+
   return (
     <>
       <Stack spacing={8}>
@@ -22,7 +29,7 @@ function App() {
         </Box>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/adminPage" element={<AdminPage />} />
+          <Route path="/adminPage" element={users && users.role === 'Admin' ? <AdminPage /> : <HomePage />} /> 
           <Route path="/home" element={<HomePage />} />
           <Route path="/Register" element={<Register/>} />
           <Route path="/services"  element={<ServicePage />}/>
@@ -32,6 +39,7 @@ function App() {
           <Route path="/forgot" element={<ForgotPassword />}/>
           <Route path="/reset" element={<PasswordReset/>} />
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </Stack>
     </>

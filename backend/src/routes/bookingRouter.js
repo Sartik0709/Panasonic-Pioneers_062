@@ -51,7 +51,7 @@ BookingRouter.get("/booking/:id",async(req,res)=>{
 })
 
 //get service by  
-BookingRouter.get("/booking/all",async(req,res)=>{
+BookingRouter.get("/booking",async(req,res)=>{
 
    try{
       const booking=await BookingModel.find(); 
