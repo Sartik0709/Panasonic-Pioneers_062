@@ -25,7 +25,7 @@ Attach a very short video walkthough of all of the features [ 1 - 3 minutes ]
 Attach a very short video walkthough of codebase [ 1 - 5 minutes ]
 
 ## Features
-Pet Adoption: Browse through profiles of pets available for adoption from local shelters and rescues.
+Pet Adoption:
 
 Service Providers: Discover listings of pet groomers, trainers, veterinarians, and other pet service providers in your area.
 
@@ -43,7 +43,7 @@ Detailed instructions on how to install, configure, and get the project running.
 
 ```bash
 npm install Panasonic-Pioneers_062
-cd my-project
+cd Panasonic-Pioneers_062
 npm start
 ```
 
@@ -57,7 +57,8 @@ Provide instructions and examples on how to use your project.
 Include screenshots as necessary.
 
 ## Credentials
-Provide user credentials for autheticated pages
+Username: user
+Password: password123
 
 ## APIs Used
 If your application relies on external APIs, document them and include any necessary links or references.
