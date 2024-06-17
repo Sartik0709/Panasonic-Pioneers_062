@@ -39,8 +39,11 @@ The project is divided into modular components to ensure scalability and maintai
 Frontend and backend are separated to allow independent development and deployment.
 
 2 ) Technology Stack:
+
 Frontend: React.js for a dynamic and responsive user interface.
+
 Backend: Node.js with Express.js for a robust server-side application.
+
 Database: MongoDB for database management.
 
 3 ) JSON Web Tokens (JWT) are used for secure authentication and authorization.
