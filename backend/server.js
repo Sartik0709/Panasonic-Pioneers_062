@@ -6,8 +6,10 @@ import { userRoute } from './src/routes/userRoute.js';
 import cors from 'cors';
 import { servicePRovider } from './src/routes/serviceProvider.js';
 import { auth } from './src/middlewares/auth.js';
+import BookingRouter from './src/routes/bookingRouter.js';
 import path from 'path';
 import fs from 'fs';
+
 
 config();
 
@@ -33,14 +35,18 @@ app.use("/user", userRoute);
 app.use("", pet);
 app.use("", servicePRovider);
 
-app.listen(port, async () => {
-  try {
-    await connecttodb(uri);
-    console.log('database connected successfully');
-    console.log(`server connected at the port number ${port}`);
-  } catch (err) {
-    console.log(err);
-  }
-});
+
+app.use("",BookingRouter);
+
+app.listen(port,async()=>{
+    try{
+        await connecttodb(uri);
+        console.log('database connected successfully')
+        console.log(`server connected at the port number ${port}`);
+    }catch(err){
+        console.log(err);
+    }
+    
+})
 
 export default app;

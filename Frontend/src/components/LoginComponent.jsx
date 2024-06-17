@@ -1,30 +1,59 @@
-import { useState } from 'react';
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../redux/authSlice';
+import axios from 'axios';
+import { LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS } from "../redux/action/actionTypes";
+import { useNavigate } from "react-router";
 
 
 const Login = () => {
-  const [user, setUser] = useState({ email: "", password: "" });
-  const { error } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  const [user, setUser] = useState({ email: "", password: ""});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { users, isLoading, error } = useSelector(state => state.loginData);
+ 
+  console.log("Login users:", users); // Log users from store
 
   const onChangeHandler = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+<<<<<<< HEAD
   const handleForgot = () => {
     console.log("Forgot password button clicked");
     navigate('/forgot')
 
   };
+=======
+  //handle Forget
+  const handleForgot=()=>{
+    console.log("forget Password Trigger");
+  }
+>>>>>>> d79d50ebc846298ee69fd8ef9dc9680e6cb38845
 
-  const onSubmitHandler = async (e) => {
+  const onSubmitHandler = useCallback(async (e) => {
     e.preventDefault();
-    await dispatch(loginUser(user));
-    navigate('/home');
-  };
+    dispatch({ type: LOGIN_REQUEST });
+    try {
+      const response = await axios.post("https://panasonic-pioneers-062.onrender.com/user/login", user, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log("response data:", response.data); // Log the response data
+      dispatch({ type: LOGIN_SUCCESS, payload: { user: response.data.user } });
+      setUser({email: "", password: ""});
+      localStorage.setItem("UserName",JSON.stringify(response.data.user.userName))
+      // console.log("role :",response.data.user.role);
+      if(response.data.user.role === 'Admin'){
+        navigate('/adminPage');
+      }else{
+        navigate('/home');
+      }
+    } catch (error) {
+      dispatch({ type: LOGIN_ERROR, payload: { error: error.message } });
+      alert("error :",error.message);
+    }
+  }, [user, dispatch,navigate]);
 
   return (
     <div className="h-screen flex flex-col md:flex-row justify-evenly items-center bg-gradient-to-r from-orange-400 to-white p-4">
@@ -81,7 +110,7 @@ const Login = () => {
               type="submit"
               className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-orange-700 bg-orange-200 hover:bg-orange-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Login
+              {isLoading ? 'Logging in...' : 'Login'}
             </button>
           </div>
 
