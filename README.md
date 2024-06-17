@@ -2,7 +2,7 @@
 
 
 ## Introduction
-A brief introduction of your project goes here. You may want to cover the purpose of your project, its core functionality, and what problems it solves.
+Welcome to PetPals, a website dedicated to connecting pet lovers and owners with valuable resources, information, and a community of like-minded individuals.
 
 ## Project Type
 Frontend | Backend | Fullstack
@@ -65,9 +65,7 @@ POST /api/items - create a new item
 
 
 ## Technology Stack
-List and provide a brief overview of the technologies used in the project.
-
-- Node.js
-- Express.js
-- MongoDB
-- Other libraries/modules
+Frontend: HTML, CSS, JavaScript, React.js
+Backend: Node.js, Express.js, MongoDB
+Authentication: JSON Web Tokens (JWT)
+External APIs: Used for fetching pet adoption data and event information
