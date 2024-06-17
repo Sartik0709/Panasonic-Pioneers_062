@@ -13,6 +13,7 @@ import About from './pages/About';
 import Register from './components/Register';
 import { AdminPage } from './pages/AdminPage';
 import { useSelector } from 'react-redux';
+import Footer from './components/Footer';
 
 
 
@@ -23,13 +24,15 @@ function App() {
 
   return (
     <>
-      <Stack spacing={8}>
+     <Stack spacing={4}>
         <Box>
         <Navbar />
         </Box>
+        
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/adminPage" element={users && users.role === 'Admin' ? <AdminPage /> : <HomePage />} /> 
+          {/* <Route path="/adminPage" element={users && users.role === 'Admin' ? <AdminPage /> : <HomePage />} />  */}
+          <Route path="/adminPage" element={<AdminPage/>}  />
           <Route path="/home" element={<HomePage />} />
           <Route path="/Register" element={<Register/>} />
           <Route path="/services"  element={<ServicePage />}/>
@@ -42,6 +45,10 @@ function App() {
           <Route path="*" element={<HomePage />} />
         </Routes>
       </Stack>
+      <Box>
+       <Footer />
+      </Box>
+      
     </>
   );
 

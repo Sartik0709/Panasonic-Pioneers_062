@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Adminpet from "../components/Adminpet";
 import AdminService from "../components/AdminService";
+import PetsList from "./PetLists";
 
 export const AdminPage = () => {
   const [content, setContent] = useState('DASHBOARD');
@@ -32,7 +33,7 @@ export const AdminPage = () => {
         </button>
         <button
           className={`w-full p-3 rounded text-white ${content === 'PETS' ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
-          onClick={() => handleButtonClick('PETS')}
+          onClick={() => handleButtonClick(<PetsList />)}
         >
           PETS
         </button>
