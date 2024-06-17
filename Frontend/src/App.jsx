@@ -5,15 +5,20 @@ import HomePage from "./pages/HomePage";
 import Login from "./components/LoginComponent";
 import { Box, Stack } from "@chakra-ui/react";
 import Adoptpetpage from "./pages/AdpotPetPage";
+import ForgotPassword from './components/ForgotPassword';
+import PasswordReset from './components/PasswordReset';
 import ServicePage from './pages/ServicePage';
 import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
 import Register from './components/Register';
 import { AdminPage } from './pages/AdminPage';
+// import Petform from './components/Petform';
+
 
 
 function App() {
   return (
+
     <>
       <Stack spacing={20}>
         <Box>
@@ -30,7 +35,6 @@ function App() {
           <Route path="/Adoptpage" element={<Adoptpetpage />} />  
           <Route path="/about" element={<About />} />
         </Routes>
-        
       </Stack>
     </>
   );

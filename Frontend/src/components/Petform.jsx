@@ -51,7 +51,11 @@ function Petform() {
     }
 
     try {
-      const response = await axios.post('https://panasonic-pioneers-062.onrender.com/pets/add', data);
+      const response = await axios.post('https://panasonic-pioneers-062.onrender.com/pets/add', data, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       console.log(response);
       setModalIsOpen(true);
     } catch (error) {
