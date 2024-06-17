@@ -23,6 +23,7 @@ userRoute.get("/all",async(req,res)=>{
         res.status(500).send("error :" ,err.message)
     }
 })
+
 const otpStore = {};
 
 // Helper function to generate OTP

@@ -84,6 +84,7 @@ const PetsList = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
+    <>
     <div className="RPetsList-container">
       <div className="RContent">
         <aside className="RSidebar">
@@ -172,6 +173,8 @@ const PetsList = () => {
         </main>
       </div>
     </div>
+    
+    </>
   );
 };
 

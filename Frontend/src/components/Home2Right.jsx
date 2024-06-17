@@ -23,7 +23,7 @@ const Home2Right = () => {
               src="https://dm6g3jbka53hp.cloudfront.net/static-images/homepage__services-section__large-tick-icon.svg"
               className="w-6 h-6 md:w-8 md:h-8"
             />
-            <span>All service providers at ThePetNest undergo a basic background check.</span>
+            <span>All service providers at ThePetPal s undergo a basic background check.</span>
           </p>
           <p className="text-gray-600 flex gap-x-4 md:gap-x-6 items-center mb-4">
             <img
