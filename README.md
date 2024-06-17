@@ -25,11 +25,15 @@ Attach a very short video walkthough of all of the features [ 1 - 3 minutes ]
 Attach a very short video walkthough of codebase [ 1 - 5 minutes ]
 
 ## Features
-List out the key features of your application.
+Pet Adoption: Browse through profiles of pets available for adoption from local shelters and rescues.
 
-- Feature 1
-- Feature 2
-- Feature 3
+Service Providers: Discover listings of pet groomers, trainers, veterinarians, and other pet service providers in your area.
+
+Pet Care Tips: Access articles and guides on pet care, grooming, training, and health.
+
+Community Forum: Engage with other users in discussions, share stories, ask questions, and seek advice.
+
+Events: Stay updated on pet-related events in your area, including adoption drives, workshops, and more.
 
 ## design decisions or assumptions
 List your design desissions & assumptions
