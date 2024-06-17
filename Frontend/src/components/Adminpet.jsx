@@ -42,28 +42,28 @@ export default function Adminpet() {
 
   return (
     <div className="container mx-auto mt-4">
-      <div className="rounded-2xl items-center mb-4 bg-orange-500 text-white w-2/5 p-2.5 max-h-20 flex justify-center" >
+      <div className="rounded-2xl items-center mb-4 bg-blue-500 text-white w-1/2 mx-auto p-4 flex justify-center shadow-lg">
         <h2 className="text-3xl font-bold">TOTAL USERS: {totalObjects}</h2>
       </div>
-      <div className="overflow-y-auto max-h-[70vh]">
-        <table className="table-auto w-full border-collapse border border-gray-400">
+      <div className="overflow-y-auto max-h-[70vh] rounded-lg shadow-md">
+        <table className="table-auto w-full border-collapse">
           <thead>
-            <tr>
-              <th className="border px-4 py-2">Username</th>
-              <th className="border px-4 py-2">Email</th>
-              <th className="border px-4 py-2">Role</th>
-              <th className="border px-4 py-2">Action</th>
+            <tr className="bg-gray-200">
+              <th className="border px-4 py-2 text-left">Username</th>
+              <th className="border px-4 py-2 text-left">Email</th>
+              <th className="border px-4 py-2 text-left">Role</th>
+              <th className="border px-4 py-2 text-left">Action</th>
             </tr>
           </thead>
           <tbody>
             {displayedData.map((user) => (
-              <tr key={user._id}>
+              <tr key={user._id} className="hover:bg-gray-100">
                 <td className="border px-4 py-2">{user.userName}</td>
                 <td className="border px-4 py-2">{user.email}</td>
                 <td className="border px-4 py-2">{user.role}</td>
                 <td className="border px-4 py-2">
                   <button
-                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700"
+                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700 transition"
                     onClick={() => handleDelete(user._id)}
                   >
                     Delete
@@ -77,7 +77,7 @@ export default function Adminpet() {
       <div className="pagination flex justify-center mt-4">
         {currentPage > 1 && (
           <button
-            className="mx-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-200"
+            className="mx-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-200 transition"
             onClick={() => handlePageChange(currentPage - 1)}
           >
             Previous
@@ -86,7 +86,7 @@ export default function Adminpet() {
         {[...Array(totalPages)].map((_, pageIndex) => (
           <button
             key={pageIndex}
-            className={`mx-1 px-3 py-1 border border-gray-300 rounded ${currentPage === pageIndex + 1 ? "bg-blue-500 text-white" : "hover:bg-gray-200"}`}
+            className={`mx-1 px-3 py-1 border border-gray-300 rounded ${currentPage === pageIndex + 1 ? "bg-blue-500 text-white" : "hover:bg-gray-200"} transition`}
             onClick={() => handlePageChange(pageIndex + 1)}
           >
             {pageIndex + 1}
@@ -94,7 +94,7 @@ export default function Adminpet() {
         ))}
         {currentPage < totalPages && (
           <button
-            className="mx-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-200"
+            className="mx-1 px-3 py-1 border border-gray-300 rounded hover:bg-gray-200 transition"
             onClick={() => handlePageChange(currentPage + 1)}
           >
             Next

@@ -6,7 +6,8 @@ const ProviderForm = () => {
     name: '',
     services: 'pet_walking',
     price_hour: '',
-    description: ''
+    description: '',
+    rating: ''  // Adding rating field
   });
 
   const handleChange = (e) => {
@@ -20,14 +21,14 @@ const ProviderForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://panasonic-pioneers-062.onrender.com/service/add', { provider: [formData] });
+      const response = await axios.post('https://panasonic-pioneers-062.onrender.com/service/add', formData);
       console.log('Provider created:', response.data);
-      // Optionally reset the form or show a success message
       setFormData({
         name: '',
-        services: '',
+        services: 'pet_walking',
         price_hour: '',
-        description: ''
+        description: '',
+        rating: ''  // Resetting rating field
       });
     } catch (error) {
       console.error('There was an error creating the provider!', error);
@@ -91,6 +92,19 @@ const ProviderForm = () => {
           required
           className="w-full p-2 border border-gray-300 rounded"
         ></textarea>
+      </div>
+
+      <div className="mb-4">
+        <label htmlFor="rating" className="block text-gray-700">Rating</label>
+        <input
+          type="number"
+          id="rating"
+          name="rating"
+          value={formData.rating}
+          onChange={handleChange}
+          required
+          className="w-full p-2 border border-gray-300 rounded"
+        />
       </div>
       
       <button

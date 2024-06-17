@@ -31,11 +31,13 @@ app.use(cors());
 const port = process.env.PORT || 9090;
 const uri = process.env.URI || null;
 
+//user
 app.use("/user", userRoute);
+//pet
 app.use("", pet);
+//provider
 app.use("", servicePRovider);
-
-
+//bookings
 app.use("",BookingRouter);
 
 app.listen(port,async()=>{

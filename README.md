@@ -2,7 +2,7 @@
 
 
 ## Introduction
-A brief introduction of your project goes here. You may want to cover the purpose of your project, its core functionality, and what problems it solves.
+Welcome to PetPals, a website dedicated to connecting pet lovers and owners with valuable resources, information, and a community of like-minded individuals.
 
 ## Project Type
 Frontend | Backend | Fullstack
@@ -25,11 +25,15 @@ Attach a very short video walkthough of all of the features [ 1 - 3 minutes ]
 Attach a very short video walkthough of codebase [ 1 - 5 minutes ]
 
 ## Features
-List out the key features of your application.
+Pet Adoption:
 
-- Feature 1
-- Feature 2
-- Feature 3
+Service Providers: Discover listings of pet groomers, trainers, veterinarians, and other pet service providers in your area.
+
+Pet Care Tips: Access articles and guides on pet care, grooming, training, and health.
+
+Community Forum: Engage with other users in discussions, share stories, ask questions, and seek advice.
+
+Events: Stay updated on pet-related events in your area, including adoption drives, workshops, and more.
 
 ## design decisions or assumptions
 List your design desissions & assumptions
@@ -38,8 +42,8 @@ List your design desissions & assumptions
 Detailed instructions on how to install, configure, and get the project running. For BE/FS projects, guide the reviewer how to check mongodb schema etc.
 
 ```bash
-npm install my-project
-cd my-project
+npm install Panasonic-Pioneers_062
+cd Panasonic-Pioneers_062
 npm start
 ```
 
@@ -53,7 +57,8 @@ Provide instructions and examples on how to use your project.
 Include screenshots as necessary.
 
 ## Credentials
-Provide user credentials for autheticated pages
+Username: user
+Password: password123
 
 ## APIs Used
 If your application relies on external APIs, document them and include any necessary links or references.
@@ -65,9 +70,11 @@ POST /api/items - create a new item
 
 
 ## Technology Stack
-List and provide a brief overview of the technologies used in the project.
 
-- Node.js
-- Express.js
-- MongoDB
-- Other libraries/modules
+Frontend: HTML, CSS, JavaScript, React.js
+
+Backend: Node.js, Express.js, MongoDB
+
+Authentication: JSON Web Tokens (JWT)
+
+External APIs: Used for fetching pet adoption data and event information

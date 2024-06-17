@@ -1,64 +1,61 @@
 import { useState } from "react";
-// import PetpalVideo from "../components/PetpalVideo";
 import Adminpet from "../components/Adminpet";
 import AdminService from "../components/AdminService";
 
-export const AdminPage = ()=>{
-   const [content, setContent] = useState('DASHBORD');
-const handleButtonClick = (content) => {
-  setContent(content);
-};
+export const AdminPage = () => {
+  const [content, setContent] = useState('DASHBOARD');
 
-return (
-   <>
-  <div className="flex h-screen mt-8">
-  <div className="w-1/4 bg-gray-100 p-5 shadow-lg flex flex-col gap-y-6">
-      <button
-        className="w-full mb-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        onClick={() => handleButtonClick(<Adminpet />)}
-      >
-        USERS
-      </button>
-      <button
-        className="w-full mb-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        onClick={() => handleButtonClick(<AdminService />)}
-      >
-        SERVICE PROVIDER
-      </button>
-      <button
-        className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        onClick={() => handleButtonClick("This is Donation")}
-      >
-        DONATION
-      </button>
-      <button
-        className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        onClick={() => handleButtonClick("This is PETSSS")}
-      >
-        PETS
-      </button>
-    </div>
-    <div className="flex-grow p-5 bg-white">
-      <div>
-        <h2 className="text-2xl font-bold mb-4">{content}</h2>
-        {content === 'Content for Button 1' && (
-          <p>This is the detailed content for Button 1. You can add more structured information here.</p>
-        )}
-        {content === 'Content for Button 2' && (
-          <p>This is the detailed content for Button 2. You can add different structured information here.</p>
-        )}
-        {content === 'Content for Button 3' && (
-          <p>This is the detailed content for Button 3. You can add even more structured information here.</p>
-        )}
-         {content === 'Content for Button Donation' && (
-          <p>This is the detailed content for DONAtION . You can add even more structured information here.</p>
-        )}
+  const handleButtonClick = (content) => {
+    setContent(content);
+  };
+
+  return (
+    <div className="flex flex-col lg:flex-row h-screen mt-10">
+      <div className="w-full lg:w-1/4 bg-gray-200 p-6 shadow-md flex flex-col gap-y-4">
+        <button
+          className={`w-full p-3 rounded text-white ${content === 'DASHBOARD' ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
+          onClick={() => handleButtonClick('DASHBOARD')}
+        >
+          DASHBOARD
+        </button>
+        <button
+          className={`w-full p-3 rounded text-white ${content.type === Adminpet ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
+          onClick={() => handleButtonClick(<Adminpet />)}
+        >
+          USERS
+        </button>
+        <button
+          className={`w-full p-3 rounded text-white ${content.type === AdminService ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
+          onClick={() => handleButtonClick(<AdminService />)}
+        >
+          SERVICE PROVIDER
+        </button>
+        <button
+          className={`w-full p-3 rounded text-white ${content === 'PETS' ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
+          onClick={() => handleButtonClick('PETS')}
+        >
+          PETS
+        </button>
+        <button
+          className={`w-full p-3 rounded text-white ${content === 'DONATION' ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
+          onClick={() => handleButtonClick('DONATION')}
+        >
+          DONATION
+        </button>
+       
+      </div>
+      <div className="flex-grow p-6 bg-white shadow-md overflow-auto">
+        <div className="h-full flex flex-col items-center justify-center">
+          <h2 className="text-3xl font-semibold mb-4">
+            {typeof content === 'string' ? content : ''}
+          </h2>
+          <div className="w-full h-full">
+            {typeof content !== 'string' && content}
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-    </>
-   )
-}
+  );
+};
 
-
-
+export default AdminPage;
