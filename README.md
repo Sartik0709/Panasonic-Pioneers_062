@@ -38,7 +38,7 @@ List your design desissions & assumptions
 Detailed instructions on how to install, configure, and get the project running. For BE/FS projects, guide the reviewer how to check mongodb schema etc.
 
 ```bash
-npm install my-project
+npm install Panasonic-Pioneers_062
 cd my-project
 npm start
 ```
@@ -65,7 +65,11 @@ POST /api/items - create a new item
 
 
 ## Technology Stack
+
 Frontend: HTML, CSS, JavaScript, React.js
+
 Backend: Node.js, Express.js, MongoDB
+
 Authentication: JSON Web Tokens (JWT)
+
 External APIs: Used for fetching pet adoption data and event information
