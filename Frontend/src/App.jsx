@@ -5,8 +5,8 @@ import HomePage from "./pages/HomePage";
 import Login from "./components/LoginComponent";
 import { Box, Stack } from "@chakra-ui/react";
 import Adoptpetpage from "./pages/AdpotPetPage";
-// import ForgotPassword from './components/ForgotPassword';
-// import PasswordReset from './components/PasswordReset';
+import ForgotPassword from './components/ForgotPassword';
+import PasswordReset from './components/PasswordReset';
 import ServicePage from './pages/ServicePage';
 import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
@@ -29,7 +29,7 @@ function App() {
           <Route path="/servicePaymentPage" element={<ServicePayment />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Adoptpage" element={<Adoptpetpage />} />
-          <Route path="/forgot" element={<ForgotPassword/>}/>
+          <Route path="/forgot" element={<ForgotPassword />}/>
           <Route path="/reset" element={<PasswordReset/>} />
           <Route path="/about" element={<About />} />
         </Routes>
