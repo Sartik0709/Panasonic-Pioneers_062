@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for navigation
 import './PetsList.css'; // Custom CSS file
-=======
 import { Card, Button, Container } from 'react-bootstrap';
 import './PetsList.css'; 
->>>>>>> d79d50ebc846298ee69fd8ef9dc9680e6cb38845
+
 
 const PetsList = () => {
   const [pets, setPets] = useState([]);
@@ -26,7 +24,7 @@ const PetsList = () => {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await axios.get('http://localhost:9090/pets/all', {
+        const response = await axios.get('https://panasonic-pioneers-062.onrender.com/pets/all', {
           params: { page, limit: 6 }
         });
         console.log("API Response:", response.data);

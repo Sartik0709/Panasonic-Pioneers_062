@@ -17,18 +17,18 @@ const Login = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-<<<<<<< HEAD
+
   const handleForgot = () => {
     console.log("Forgot password button clicked");
     navigate('/forgot')
 
   };
-=======
-  //handle Forget
-  const handleForgot=()=>{
-    console.log("forget Password Trigger");
-  }
->>>>>>> d79d50ebc846298ee69fd8ef9dc9680e6cb38845
+
+  // //handle Forget
+  // const handleForgot=()=>{
+  //   console.log("forget Password Trigger");
+  // }
+
 
   const onSubmitHandler = useCallback(async (e) => {
     e.preventDefault();
