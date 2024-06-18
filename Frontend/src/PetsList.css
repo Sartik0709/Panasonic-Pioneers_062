@@ -1,169 +1,170 @@
-/* Container for the entire PetsList component */
-.RPetsList-container {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  background-color: #f8f9fa;
-}
-
-/* Flex container for sidebar and main content */
-.RContent {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-}
-
-/* Sidebar styling */
-.RSidebar {
-  width: 250px;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Main content styling */
-.RMain-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Search form styling */
-.RSearch-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.RForm-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.RSearch-form label {
-  font-weight: bold;
-}
-
-.RSearch-form input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.RSearch-button {
-  padding: 10px;
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.RSearch-button:hover {
-  background-color: #0056b3;
-}
-
-/* Pets grid styling */
-.RPets-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-/* Pet card styling */
-.RPet-card {
-  flex: 1 1 calc(33.333% - 20px);
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 450px; /* Set a fixed height for the card */
-}
-
-.RPet-image {
-  width: 100%;
-  height: 200px; /* Set a fixed height for the image */
-  object-fit: cover;
-}
-
-.RPet-details {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Ensure details are spaced evenly */
-  height: 100%; /* Ensure details section takes full height of the card */
-}
-
-.RPet-name {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-.RPet-info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.RKey {
-  font-weight: bold;
-}
-
-.RContact-button, .RFavorite-button {
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #28a745;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 100%;
-}
-
-.RFavorite-button {
-  background-color: #ffc107;
-}
-
-.RContact-button:hover {
-  background-color: #218838;
-}
-
-.RFavorite-button:hover {
-  background-color: #e0a800;
-}
-
-/* Pagination styling */
-.RPagination {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.RPagination button {
-  padding: 8px 12px;
-  background-color: #007bff;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.RPagination button.RActive {
-  background-color: #0056b3;
-  font-weight: bold;
-}
-
-.RPagination button:hover:not(.RActive) {
-  background-color: #0056b3;
-}
+/* General styling for the background */
+.pets-list-background {
+    background-image: url('path/to/your/background-image.jpg'); /* Ensure this is the correct path to your image */
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+  }
+  
+  /* Container styling */
+  .pets-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Ensure items start from the top */
+    gap: 20px; /* Adjust spacing between items */
+    padding: 20px; /* Add padding for breathing room */
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    position: sticky;
+    top: 20px; /* Adjust top spacing */
+    flex: 0 0 250px; /* Fixed width sidebar */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .sidebar .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .sidebar .form-control {
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 100%; /* Full width input */
+  }
+  
+  .sidebar .search-button {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s, border-color 0.3s;
+    padding: 10px; /* Adjust button padding */
+  }
+  
+  .sidebar .search-button:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+  /* Pet cards container */
+  .pets-cards-container {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Adjust gap between cards */
+  }
+  
+  /* Card styling */
+  .pet-card {
+    flex: 0 0 calc(25% - 20px); /* Adjust card width to fit 3 to 4 cards per row */
+    max-width: calc(25% - 20px); /* Ensure max width for responsiveness */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .pet-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .pet-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .pet-card .card-body {
+    padding: 15px;
+  }
+  
+  .pet-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .pet-card .card-text {
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pet-card .card-text .key {
+    display: inline-block;
+    font-weight: 600;
+    color: #007bff;
+    margin-right: 5px;
+  }
+  
+  .pet-card .contact-button,
+  .pet-card .favorite-button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px; /* Adjust button padding */
+  }
+  
+  .pet-card .contact-button {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .pet-card .contact-button:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  .pet-card .favorite-button {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  .pet-card .favorite-button:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  
+  /* Grid responsiveness */
+  @media (max-width: 1200px) {
+    .pet-card {
+      flex: 0 0 calc(33.33% - 20px);
+      max-width: calc(33.33% - 20px);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .pet-card {
+      flex: 0 0 calc(50% - 20px);
+      max-width: calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .pet-card {
+      flex: 1 0 calc(100% - 20px);
+      max-width: calc(100% - 20px);
+    }
+  
+    .sidebar {
+      flex: 1 0 100%; /* Sidebar takes full width on smaller screens */
+      margin-bottom: 20px;
+    }
+  }
+  
