@@ -13,10 +13,11 @@ Backend: https://deployed-site.whatever
 Database: https://deployed-site.whatever
 
 ## Directory Structure
-![Screenshot 2024-06-17 231656](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/107359448/3975b843-f81c-48cb-924f-10b9317890b0)
+Frontend
 ![Screenshot 2024-06-17 231837](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/107359448/1b79ec0a-ba50-4d53-9601-5440a29e2ff0)
 
-
+Backend
+![Screenshot 2024-06-17 231656](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/107359448/3975b843-f81c-48cb-924f-10b9317890b0)
 
 ## Video Walkthrough of the project
 Attach a very short video walkthough of all of the features [ 1 - 3 minutes ]
