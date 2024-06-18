@@ -12,10 +12,12 @@ import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
 import Register from './components/Register';
 import { AdminPage } from './pages/AdminPage';
+import Petform from './components/Petform';
 import { useSelector } from 'react-redux';
 import Footer from './components/Footer';
-import Petform from './components/Petform';
-
+// import PaymentPage from './components/PaymentPage';
+// import PetsList from './pages/AdpotPetPage';
+import PaymentPage from './components/PaymentPage';
 
 
 function App() {
@@ -25,11 +27,10 @@ function App() {
 
   return (
     <>
-     <Stack spacing={4}>
+     <Stack spacing={6}>
         <Box>
         <Navbar />
         </Box>
-        
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/adminPage" element={users && users.role === 'Admin' ? <AdminPage /> : <HomePage />} /> 
@@ -44,13 +45,13 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="*" element={<HomePage />} />
           <Route path='/RehomePet' element={<Petform />}/>
+          <Route path='/payment/:id' element={<PaymentPage />}/>
         </Routes>
       </Stack>
       <Box>
        <Footer />
       </Box>
-      
-    </>
+      </>
   );
 
 }

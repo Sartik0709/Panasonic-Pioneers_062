@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './PetsList.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for navigation
+import './PetsList.css'; // Custom CSS file
+// import { Card, Button, Container } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+
 
 const PetsList = () => {
   const [pets, setPets] = useState([]);
@@ -16,7 +19,10 @@ const PetsList = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize useNavigate
+  const {users}=useSelector(state => state.loginData);
+
+  // console.log("mydata",users)
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -57,14 +63,17 @@ const PetsList = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // console.log(`Changing ${name} to ${value}`);
     setSearchParams((prevParams) => ({
       ...prevParams,
       [name]: value,
     }));
   };
 
-  const handlePetSelect = (pet) => {
-    navigate(`/payment/${pet._id}`);
+  const handlePetSelect = (id) => {
+    // console.log("trigger petSelected:", `/payment/${id}`);
+    localStorage.setItem('petId', JSON.stringify(id));
+    navigate(`/payment/${id}`);
   };
 
   const handlePageChange = (newPage) => {
@@ -124,14 +133,12 @@ const PetsList = () => {
                 <div className="RPet-details">
                   <h3 className="RPet-name">{pet.name}</h3>
                   <div className="RPet-info">
-                    <div><span className="RKey">Type:</span> {pet.type}</div>
                     <div><span className="RKey">Breed:</span> {pet.breed}</div>
                     <div><span className="RKey">Age:</span> {pet.age}</div>
                     <div><span className="RKey">Gender:</span> {pet.gender}</div>
                     <div><span className="RKey">Health Status:</span> {pet.healthStatus}</div>
                     <div><span className="RKey">Owner Name:</span> {pet.ownerName}</div>
                     <div><span className="RKey">Owner Contact:</span> {pet.ownerContact}</div>
-                    <div><span className="RKey">Description:</span> {pet.description}</div>
                   </div>
                   <button
                     className="RContact-button"
@@ -141,7 +148,7 @@ const PetsList = () => {
                   </button>
                   <button
                     className="RFavorite-button"
-                    onClick={() => handlePetSelect(pet)}
+                    onClick={() => handlePetSelect(pet._id)} // Handle adoption click
                   >
                     Adopt pet
                   </button>
