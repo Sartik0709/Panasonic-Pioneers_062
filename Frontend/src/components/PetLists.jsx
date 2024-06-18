@@ -32,7 +32,7 @@ const PetsList = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h4 className="text-2xl font-bold mb-4 bg-red-300">Total Pets: {total}</h4>
+      <div className="text-3xl font-bold rounded-2xl items-center mb-4 bg-blue-500 text-white w-1/2 mx-auto p-4 flex justify-center shadow-lg">Total Pets: {total}</div>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-200">
           <thead>

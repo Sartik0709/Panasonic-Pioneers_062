@@ -57,14 +57,17 @@
 
 .RSidebar {
   flex: 0 0 300px;
-  background-color: #fff; /* White background */
+  background-color: #ffffff; /* White background */
   padding: 20px;
   position:sticky;
-  top: 200px; /* Adjusted to ensure below header */
+  /* top: 200px; Adjusted to ensure below header */
   height: fit-content; /* Adjust height as per content */
   margin-right: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure sidebar above main content */
+  border-radius: 16px;
+  z-index: 0; /* Ensure sidebar above main content */
+  position: sticky;
+  top: 120px;
 }
 
 .RSidebar.sticky {

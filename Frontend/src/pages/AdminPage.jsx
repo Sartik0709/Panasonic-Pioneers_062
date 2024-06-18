@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Adminpet from "../components/Adminpet";
 import AdminService from "../components/AdminService";
-import PetsList from "./PetLists";
+import PetsList from "../components/PetLists";
 
 export const AdminPage = () => {
   const [content, setContent] = useState('DASHBOARD');
