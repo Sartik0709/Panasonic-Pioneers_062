@@ -23,6 +23,7 @@ userRoute.get("/all",async(req,res)=>{
         res.status(500).send("error :" ,err.message)
     }
 })
+
 const otpStore = {};
 
 // Helper function to generate OTP
@@ -93,6 +94,7 @@ userRoute.post("/login",async(req,res)=>{
         res.json({
             message :"user login successfully",
             user : {
+              id: existUser._id,
               userName : existUser.userName,
               email:existUser.email,
               password : existUser.password,

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Card, Button, Container } from 'react-bootstrap';
 import './ServiceList.css';
 import { useNavigate } from 'react-router';
+import PetpalVideo from '../components/PetpalVideo';
 
 const ServicePage = () => {
   const [services, setServices] = useState([]);
@@ -11,7 +12,7 @@ const ServicePage = () => {
   const Navigate = useNavigate();
 
   const handleBookService = (serviceId) => {
-    console.log('Booked service with ID:', serviceId);
+    // console.log('Booked service with ID:', serviceId);
     localStorage.setItem('BookId', JSON.stringify(serviceId));
       Navigate('/servicePaymentPage')
   };
@@ -20,7 +21,7 @@ const ServicePage = () => {
     const fetchServices = async () => {
       try {
         const response = await axios.get('https://panasonic-pioneers-062.onrender.com/service/all');
-        console.log("response: ", response.data.provider);
+        // console.log("response: ", response.data.provider);
         setServices(response.data.provider);
       } catch (err) {
         setError(err.message);
@@ -37,6 +38,7 @@ const ServicePage = () => {
 
   return (
     <>
+   
       <div className="intro-section">
         <Container >
           <h1>Welcome to Pet Services</h1>
@@ -46,12 +48,10 @@ const ServicePage = () => {
           <Button variant="primary" style={{ color: 'white', backgroundColor: '#f1b505', marginTop:"10px", padding:"10px", borderRadius:"10px" }}>Book Session</Button>
         </Container>
       </div>
-      <h1 className="intro-heading">Exceptional Pet Care Services</h1>
+       <h1 className="intro-heading">Exceptional Pet Care Services</h1>
       <Container className="service-list-container">
         {services.map((service) => (
           <Card key={service._id} className="service-card">
-            {/* Uncomment the next line if you have a photos array */}
-            {/* <Card.Img variant="top" src={service.photos[0]} alt={`${service.name} photo`} /> */}
             <Card.Body>
               <Card.Title>{service.name}</Card.Title>
               <Card.Text>Services: {service.services}</Card.Text>
