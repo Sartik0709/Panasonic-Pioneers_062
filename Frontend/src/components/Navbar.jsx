@@ -12,10 +12,10 @@ const Navbar = () => {
 
   // Use default empty object to prevent errors when users is null or undefined
   const  {users}  = useSelector(state => state.loginData);
-  console.log("navbar :", users);
+  // console.log("navbar :", users);
 
   const [isAuthenticated, setIsAuthenticated] = useState(!!users);
-  console.log("isAuthenticated :",isAuthenticated);
+  // console.log("isAuthenticated :",isAuthenticated);
   const onLogoutHandler = () => {
     setIsAuthenticated(false);
     navigate('/home');

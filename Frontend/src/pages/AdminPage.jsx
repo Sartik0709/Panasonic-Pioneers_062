@@ -4,7 +4,7 @@ import AdminService from "../components/AdminService";
 import PetsList from "../components/PetLists";
 
 export const AdminPage = () => {
-  const [content, setContent] = useState('DASHBOARD');
+  const [content, setContent] = useState(<Adminpet />);
 
   const handleButtonClick = (content) => {
     setContent(content);
@@ -13,12 +13,6 @@ export const AdminPage = () => {
   return (
     <div className="flex flex-col lg:flex-row h-screen mt-10">
       <div className="w-full lg:w-1/4 bg-gray-200 p-6 shadow-md flex flex-col gap-y-4">
-        <button
-          className={`w-full p-3 rounded text-white ${content === 'DASHBOARD' ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
-          onClick={() => handleButtonClick('DASHBOARD')}
-        >
-          DASHBOARD
-        </button>
         <button
           className={`w-full p-3 rounded text-white ${content.type === Adminpet ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
           onClick={() => handleButtonClick(<Adminpet />)}

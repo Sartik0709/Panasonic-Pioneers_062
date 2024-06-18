@@ -30,7 +30,6 @@ const PetsList = () => {
         const response = await axios.get('https://panasonic-pioneers-062.onrender.com/pets/all', {
           params: { page, limit: 6 }
         });
-        console.log("API Response:", response.data);
         setPets(response.data.pets);
         setFilteredPets(response.data.pets);
         setTotalPages(response.data.pages);
@@ -47,7 +46,6 @@ const PetsList = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     const { type, breed, ownerCity } = searchParams;
-    console.log("Search Params:", searchParams);
 
     const filtered = pets.filter((pet) => {
       return (
@@ -56,15 +54,12 @@ const PetsList = () => {
         (ownerCity ? (pet.ownerCity && pet.ownerCity.toLowerCase().includes(ownerCity.toLowerCase())) : true)
       );
     });
-    console.log("Filtered Pets:", filtered);
     setFilteredPets(filtered);
   };
- 
 
   const handleContactOwner = (ownerContact) => {
     window.location.href = `mailto:${ownerContact}`;
   };
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -89,7 +84,6 @@ const PetsList = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <>
     <div className="RPetsList-container">
       <div className="RContent">
         <aside className="RSidebar">
@@ -176,8 +170,6 @@ const PetsList = () => {
         </main>
       </div>
     </div>
-    
-    </>
   );
 };
 

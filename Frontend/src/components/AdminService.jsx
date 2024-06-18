@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ProviderForm from "./ProviderForm";
+import { useNavigate } from "react-router";
 
 export default function AdminService() {
   const [data, setData] = useState([]);
@@ -8,6 +9,7 @@ export default function AdminService() {
   const rowsPerPage = 10; // Fixed number of rows per page
   const [totalPages, setTotalPages] = useState(0);
   const [totalObjects, setTotalObjects] = useState(0);
+  const navigation= useNavigate();
 
   // To open the service adding page
   const [showForm, setShowForm] = useState(false);
@@ -29,6 +31,8 @@ export default function AdminService() {
   };
 
   const displayedData = data.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+
+
 
   return (
     <div className="container mx-auto mt-4">

@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-     <Stack spacing={4}>
+     <Stack spacing={6}>
         <Box>
         <Navbar />
         </Box>
