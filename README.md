@@ -8,8 +8,13 @@ Welcome to PetPals, This website is designed to facilitate the adoption of pets,
 Fullstack | Frontend | Backend | 
 
 ## Deployed App
-Frontend: [https://deployed-site.whatever](https://pet-petpals.netlify.app)
-Backend: [https://deployed-site.whatever](https://panasonic-pioneers-062.onrender.com)
+Frontend: [(https://pet-petpals.netlify.app)](https://pet-petpals.netlify.app)
+
+
+Backend: [(https://panasonic-pioneers-062.onrender.com)](https://panasonic-pioneers-062.onrender.com)
+
+
+
 Database:mongodb+srv://sharmasartik:bYrfpPGcyQacY3XI@cluster0.ahxkwhi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 ## Directory Structure
