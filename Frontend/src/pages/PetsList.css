@@ -1,231 +1,161 @@
-/* Basic reset and layout */
-
-
+/* Container for the entire PetsList component */
 .RPetsList-container {
-  margin-top: 80px;
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f8f9fa;
 }
 
-.RHeader {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* Ensure header stays on top */
-}
-
-.RHeader-title {
-  margin: 0;
-  font-size: 24px;
-}
-
-.RHeader-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.RHeader-nav ul li {
-  margin-right: 10px;
-}
-
-.RHeader-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.RHeader-nav ul li a:hover {
-  background-color: #555;
-}
-
+/* Flex container for sidebar and main content */
 .RContent {
   display: flex;
-  flex: 1;
-  justify-content: center; /* Center align content */
-  padding: 20px;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
 }
 
+/* Sidebar styling */
 .RSidebar {
-  flex: 0 0 300px;
-  background-color: #ffffff; /* White background */
+  width: 250px;
   padding: 20px;
-  position:sticky;
-  /* top: 200px; Adjusted to ensure below header */
-  height: fit-content; /* Adjust height as per content */
-  margin-right: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  z-index: 0; /* Ensure sidebar above main content */
-  position: sticky;
-  top: 120px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.RSidebar.sticky {
-  position: -webkit-sticky; /* For Safari */
-  position: sticky;
-  top: 500px;
-   /* Adjust as needed */
+/* Main content styling */
+.RMain-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Search form styling */
 .RSearch-form {
-  max-width: 100%;
-  margin-bottom: 20px;
-}
-
-.RSearch-form h2 {
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .RForm-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.RForm-group label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
+.RSearch-form label {
+  font-weight: bold;
 }
 
-.RForm-group input {
-  width: 100%;
+.RSearch-form input {
   padding: 8px;
-  font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .RSearch-button {
-  display: block;
-  width: 100%;
   padding: 10px;
   background-color: #007bff;
-  color: #fff;
+  color: #ffffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .RSearch-button:hover {
   background-color: #0056b3;
 }
 
-.RMain-content {
-  flex: 1;
+/* Pets grid styling */
+.RPets-grid {
+  display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Added gap between cards */
-  justify-content: center; /* Center align cards */
+  gap: 20px;
 }
 
 .RPet-card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Fixed width for cards */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 calc(33.333% - 20px);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center align content */
-}
-
-.RPet-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .RPet-image {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
-}
-
-.RPet-card:hover .RPet-image {
-  transform: scale(1.05);
+  height: 200px;
+  object-fit: cover;
 }
 
 .RPet-details {
-  margin-top: 15px;
-  text-align: center; /* Center align text */
+  padding: 15px;
 }
 
 .RPet-name {
-  font-size: 20px;
+  font-size: 1.5em;
   margin-bottom: 10px;
 }
 
 .RPet-info {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 5px;
-}
-
-.RPet-info .RKey {
-  font-weight: bold;
-  color: #007bff; /* Blue color for key */
-  margin-right: 5px;
-}
-
-.RContact-button,
-.RFavorite-button {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 3px;
-  transition: background-color 0.3s ease;
-}
-
-.RContact-button:hover,
-.RFavorite-button:hover {
-  background-color: #45a049;
-}
-
-.RPets-grid{
-  margin-left: 10%;
-  margin-right: auto;
   display: flex;
-  gap:20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 5px;
 }
 
+.RKey {
+  font-weight: bold;
+}
 
+.RContact-button, .RFavorite-button {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+.RFavorite-button {
+  background-color: #ffc107;
+}
+
+.RContact-button:hover {
+  background-color: #218838;
+}
+
+.RFavorite-button:hover {
+  background-color: #e0a800;
+}
+
+/* Pagination styling */
 .RPagination {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  gap: 10px;
 }
 
 .RPagination button {
-  margin: 0 5px;
-  padding: 10px 15px;
-  height: 40px;
-  border: none;
+  padding: 8px 12px;
   background-color: #007bff;
-  color: white;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
 .RPagination button.RActive {
   background-color: #0056b3;
+  font-weight: bold;
 }
 
 .RPagination button:hover:not(.RActive) {
