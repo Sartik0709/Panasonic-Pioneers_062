@@ -28,7 +28,11 @@ Home Page
 Registration Page
 ![Screenshot 2024-06-17 231114](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/107359448/80ce6b4e-de52-4d3e-bc17-587789ec5762)
 
+Service Page
+![Screenshot 2024-06-17 231035](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/107359448/13ce439a-b8bc-4923-a962-88663c8fda04)
 
+About Page
+![Screenshot 2024-06-17 231248](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/107359448/655e9ea1-6842-4f21-aa94-969aaa8499b5)
 
 
 
@@ -65,7 +69,9 @@ Detailed instructions on how to install, configure, and get the project running.
 ```bash
 npm install Panasonic-Pioneers_062
 cd Panasonic-Pioneers_062
-npm start
+cd Frontend
+npm run dev
+
 ```
 
 ## Usage
@@ -78,9 +84,12 @@ Provide instructions and examples on how to use your project.
 Include screenshots as necessary.
 
 ## Credentials
-Username: user
-
+For user
+Username: user@gmail.com
 Password: password123
+For Admin
+Email:admin@gmail.com 12345
+Password:admin
 
 ## APIs Used
 If your application relies on external APIs, document them and include any necessary links or references.
