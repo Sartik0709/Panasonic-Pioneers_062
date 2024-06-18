@@ -8,9 +8,9 @@ Welcome to PetPals, a clone of the Pet Adoption Platform. This website is design
 Fullstack | Frontend | Backend | 
 
 ## Deplolyed App
-Frontend: https://deployed-site.whatever
-Backend: https://deployed-site.whatever
-Database: https://deployed-site.whatever
+Frontend: [https://deployed-site.whatever](https://pet-petpals.netlify.app)
+Backend: [https://deployed-site.whatever](https://panasonic-pioneers-062.onrender.com)
+Database:mongodb+srv://sharmasartik:bYrfpPGcyQacY3XI@cluster0.ahxkwhi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 ## Directory Structure
 
