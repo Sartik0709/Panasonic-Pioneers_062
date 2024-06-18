@@ -1,13 +1,13 @@
-# Project Title:- Panasonic-Pioneers_062
+# Project Title:- Petpals
 
 
 ## Introduction
-Welcome to PetPals, a clone of the Pet Adoption Platform. This website is designed to facilitate the adoption of pets, such as dogs and cats, from shelters or rescue organizations. The platform serves as a digital marketplace where potential adopters can browse and select pets, shelters can list available pets, and donors can contribute to support animal welfare.
+Welcome to PetPals, This website is designed to facilitate the adoption of pets, such as dogs and cats, from shelters or rescue organizations. The platform serves as a digital marketplace where potential adopters can browse and select pets, shelters can list available pets, and donors can contribute to support animal welfare.
 
 ## Project Type
 Fullstack | Frontend | Backend | 
 
-## Deplolyed App
+## Deployed App
 Frontend: [https://deployed-site.whatever](https://pet-petpals.netlify.app)
 Backend: [https://deployed-site.whatever](https://panasonic-pioneers-062.onrender.com)
 Database:mongodb+srv://sharmasartik:bYrfpPGcyQacY3XI@cluster0.ahxkwhi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
@@ -19,7 +19,7 @@ Database:mongodb+srv://sharmasartik:bYrfpPGcyQacY3XI@cluster0.ahxkwhi.mongodb.ne
 ![Screenshot 2024-06-17 231656](https://github.com/Sartik0709/Panasonic-Pioneers_062/assets/107359448/3975b843-f81c-48cb-924f-10b9317890b0)
 
 ## Video Walkthrough of the project
-Attach a very short video walkthough of all of the features [ 1 - 3 minutes ]
+Attach a concise video walkthrough of all of the features [ 1 - 3 minutes ]
 
 ## ScreenShots
 Home Page
