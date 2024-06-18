@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for n
 import './PetsList.css'; // Custom CSS file
 import { Card, Button, Container } from 'react-bootstrap';
 import './PetsList.css'; 
+import { useSelector } from 'react-redux';
 
 
 const PetsList = () => {
@@ -20,6 +21,9 @@ const PetsList = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   const navigate = useNavigate(); // Initialize useNavigate
+  const {user}=useSelector(store=>store.loginData)
+
+  console.log("mydata",user)
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -133,14 +137,12 @@ const PetsList = () => {
                 <div className="RPet-details">
                   <h3 className="RPet-name">{pet.name}</h3>
                   <div className="RPet-info">
-                    <div><span className="RKey">Type:</span> {pet.type}</div>
                     <div><span className="RKey">Breed:</span> {pet.breed}</div>
                     <div><span className="RKey">Age:</span> {pet.age}</div>
                     <div><span className="RKey">Gender:</span> {pet.gender}</div>
                     <div><span className="RKey">Health Status:</span> {pet.healthStatus}</div>
                     <div><span className="RKey">Owner Name:</span> {pet.ownerName}</div>
                     <div><span className="RKey">Owner Contact:</span> {pet.ownerContact}</div>
-                    <div><span className="RKey">Description:</span> {pet.description}</div>
                   </div>
                   <button
                     className="RContact-button"

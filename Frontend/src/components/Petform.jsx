@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import '../Petform.css';
+import { useSelector } from 'react-redux';
 
 Modal.setAppElement('#root');
 
@@ -22,6 +23,7 @@ function Petform() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const {user}=useSelector(store=>store.loginData)
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -37,6 +39,7 @@ function Petform() {
       }));
     }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,9 +55,9 @@ function Petform() {
         data.append(key, formData[key]);
       }
     }
-
+    console.log(data)
     try {
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmY5ZjZiODQxNzE5NjRlYTE0NDdlMiIsInJvbGUiOiJTaGVsdGVyIiwiaWF0IjoxNzE4NjEwNzU0LCJleHAiOjE3MTg2OTcxNTR9.f-DzwAYeM5BhEbfUX57JpiCJEKf1fLjA-tYsjYSLcNo'; // Replace with your actual token
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmY5ZjZiODQxNzE5NjRlYTE0NDdlMiIsInJvbGUiOiJTaGVsdGVyIiwiaWF0IjoxNzE4Njg0MjY1LCJleHAiOjE3MTg3NzA2NjV9.p_Yk-ZrvoPl5DHuE8KyOTg4N7OcaW3lQhW9mzRz0Xxc'; // Replace with your actual token
       const response = await axios.post('https://panasonic-pioneers-062.onrender.com/pets/add', data, {
         headers: {
           'Content-Type': 'multipart/form-data',

@@ -1,3 +1,11 @@
+.Modal>h2{
+  color: #218838;
+}
+
+.error{
+  color: red;
+}
+
 .PetApp {
     text-align: center;
     padding: 20px;
