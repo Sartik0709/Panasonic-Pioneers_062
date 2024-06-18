@@ -14,6 +14,7 @@ import Register from './components/Register';
 import { AdminPage } from './pages/AdminPage';
 import { useSelector } from 'react-redux';
 import Footer from './components/Footer';
+import Petform from './components/Petform';
 
 
 
@@ -31,9 +32,8 @@ function App() {
         
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* <Route path="/adminPage" element={users && users.role === 'Admin' ? <AdminPage /> : <HomePage />} />  */}
-          <Route path="/adminPage" element={<AdminPage/>}  />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/adminPage" element={users && users.role === 'Admin' ? <AdminPage /> : <HomePage />} /> 
+           <Route path="/home" element={<HomePage />} />
           <Route path="/Register" element={<Register/>} />
           <Route path="/services"  element={<ServicePage />}/>
           <Route path="/servicePaymentPage" element={<ServicePayment />} />
@@ -43,6 +43,7 @@ function App() {
           <Route path="/reset" element={<PasswordReset/>} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<HomePage />} />
+          <Route path='/RehomePet' element={<Petform />}/>
         </Routes>
       </Stack>
       <Box>

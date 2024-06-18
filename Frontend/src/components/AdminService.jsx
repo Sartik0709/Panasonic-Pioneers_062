@@ -33,12 +33,12 @@ export default function AdminService() {
   return (
     <div className="container mx-auto mt-4">
       <div className="flex gap-x-6">
-        <div className="rounded-2xl items-center mb-4 bg-orange-500 text-white w-2/5 p-2.5 max-h-20 flex justify-center">
+        <div className="rounded-2xl items-center mb-4 bg-blue-500 text-white w-1/2 mx-auto p-4 flex justify-center shadow-lg">
           <h2 className="text-3xl font-bold">SERVICE PROVIDER'S: {totalObjects}</h2>
         </div>
 
         <div
-          className="rounded-2xl items-center mb-4 bg-orange-500 text-white w-2/5 p-2.5 max-h-20 flex justify-center cursor-pointer"
+          className="rounded-2xl items-center mb-4 bg-blue-500 text-white w-1/2 mx-auto p-4 flex justify-center shadow-lg"
           onClick={() => setShowForm(true)}
         >
           <h2 className="text-3xl font-bold">ADD NEW SERVICE</h2>

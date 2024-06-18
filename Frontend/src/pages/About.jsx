@@ -9,7 +9,7 @@ const About = () => {
       <header className="text-center border-b-2 border-orange-500 py-8">
         <h1 className="text-4xl font-bold text-orange-500 mb-2">About PetPals</h1>
         <p className="text-xl">
-          Founded in 2019, <a href="/" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">PetPals</a> is India's premier network of 5-star pet care service providers.
+           <a href="/" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">PetPals</a> is India premier network of 5-star pet care service providers.
         </p>
       </header>
       <section className="mt-8 flex flex-wrap gap-8 justify-center">

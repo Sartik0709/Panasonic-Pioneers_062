@@ -1,4 +1,3 @@
-import React from 'react';
 
 const DogTraining = () => {
   return (
@@ -24,14 +23,14 @@ const DogTraining = () => {
           <img className="h-64 object-cover" src="https://picjj.com/images/2024/06/17/W7u5p1.jpg" alt="Puppy pawing at a hand" />
           <div className="p-6 bg-white">
             <h3 className="text-lg font-medium text-gray-900">Socialization</h3>
-            <p className="mt-2 text-base text-gray-600">Training increases your dog's confidence to explore the surroundings.</p>
+            <p className="mt-2 text-base text-gray-600">Training increases your dogs confidence to explore the surroundings.</p>
           </div>
         </div>
         <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
           <img className="h-64 object-cover" src="https://picjj.com/images/2024/06/17/W7uHBR.jpg" alt="Pug looking at the camera" />
           <div className="p-6 bg-white">
             <h3 className="text-lg font-medium text-gray-900">Mental Stimulation</h3>
-            <p className="mt-2 text-base text-gray-600">Engaging your dog's mind is as important as physical exercise.</p>
+            <p className="mt-2 text-base text-gray-600">Engaging your dogs mind is as important as physical exercise.</p>
           </div>
         </div>
       </div>
