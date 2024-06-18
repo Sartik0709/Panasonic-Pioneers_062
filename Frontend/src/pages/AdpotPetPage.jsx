@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for navigation
 import './PetsList.css'; // Custom CSS file
 // import { Card, Button, Container } from 'react-bootstrap';
-import './PetsList.css'; 
 import { useSelector } from 'react-redux';
 
 
@@ -21,9 +20,9 @@ const PetsList = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   const navigate = useNavigate(); // Initialize useNavigate
-  const {user}=useSelector(store=>store.loginData)
+  const {users}=useSelector(state => state.loginData);
 
-  console.log("mydata",user)
+  // console.log("mydata",users)
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -69,15 +68,17 @@ const PetsList = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Changing ${name} to ${value}`);
+    // console.log(`Changing ${name} to ${value}`);
     setSearchParams((prevParams) => ({
       ...prevParams,
       [name]: value,
     }));
   };
 
-  const handlePetSelect = (pet) => {
-    navigate(`/payment/${pet._id}`);
+  const handlePetSelect = (id) => {
+    // console.log("trigger petSelected:", `/payment/${id}`);
+    localStorage.setItem('petId', JSON.stringify(id));
+    navigate(`/payment/${id}`);
   };
 
   const handlePageChange = (newPage) => {
@@ -153,7 +154,7 @@ const PetsList = () => {
                   </button>
                   <button
                     className="RFavorite-button"
-                    onClick={() => handlePetSelect(pet)} // Handle adoption click
+                    onClick={() => handlePetSelect(pet._id)} // Handle adoption click
                   >
                     Adopt pet
                   </button>

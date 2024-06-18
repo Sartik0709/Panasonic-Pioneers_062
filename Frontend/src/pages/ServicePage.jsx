@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Card, Button, Container } from 'react-bootstrap';
 import './ServiceList.css';
 import { useNavigate } from 'react-router';
-import PetpalVideo from '../components/PetpalVideo';
+// import PetpalVideo from '../components/PetpalVideo';
 
 const ServicePage = () => {
   const [services, setServices] = useState([]);

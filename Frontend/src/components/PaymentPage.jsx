@@ -13,8 +13,10 @@ const PaymentPage = () => {
   useEffect(() => {
     const fetchPetDetails = async () => {
       try {
+        const petId = JSON.parse(localStorage.getItem('petId'));
         const response = await axios.get(`https://panasonic-pioneers-062.onrender.com/pets/${petId}`);
         setPet(response.data[0]); // Assuming response.data is an object with pet details
+        // console.log("response :",response);
       } catch (err) {
         console.error('Error fetching pet details:', err);
       }
@@ -36,7 +38,7 @@ const PaymentPage = () => {
       <h2>Payment Details</h2>
       <div className="pet-details payment-pet-details">
         <div className="pet-image payment-pet-image">
-          <img src={`https://panasonic-pioneers-062.onrender.com/${pet.image}`} alt={pet.name} />
+          <img src={`https://panasonic-pioneers-062.onrender.com/${pet.photos[0]}`} alt={pet.name} />
         </div>
         <div className="pet-info payment-pet-info">
           <h3>{pet.name}</h3>

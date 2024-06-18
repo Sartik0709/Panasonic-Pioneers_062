@@ -12,15 +12,13 @@ import ServicePayment from './pages/ServicePaymentPage';
 import About from './pages/About';
 import Register from './components/Register';
 import { AdminPage } from './pages/AdminPage';
-<<<<<<< HEAD
 import Petform from './components/Petform';
-=======
 import { useSelector } from 'react-redux';
 import Footer from './components/Footer';
-import Petform from './components/Petform';
+// import PaymentPage from './components/PaymentPage';
+// import PetsList from './pages/AdpotPetPage';
+import PaymentPage from './components/PaymentPage';
 
-
->>>>>>> a430e7a0508cc38f5a535e3583234827b8756e69
 
 function App() {
 
@@ -29,14 +27,10 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
-      <Petform />
-=======
      <Stack spacing={4}>
         <Box>
         <Navbar />
         </Box>
-        
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/adminPage" element={users && users.role === 'Admin' ? <AdminPage /> : <HomePage />} /> 
@@ -51,34 +45,13 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="*" element={<HomePage />} />
           <Route path='/RehomePet' element={<Petform />}/>
+          <Route path='/payment/:id' element={<PaymentPage />}/>
         </Routes>
       </Stack>
       <Box>
        <Footer />
       </Box>
-      
->>>>>>> a430e7a0508cc38f5a535e3583234827b8756e69
-    </>
-    // <>
-    //   <Stack spacing={20}>
-    //     <Box>
-    //     <Navbar />
-    //     </Box>
-    //     <Routes>
-    //       <Route path="/" element={<HomePage />} />
-    //       <Route path="/adminPage" element={<AdminPage />} />
-    //       <Route path="/home" element={<HomePage />} />
-    //       <Route path="/Register" element={<Register/>} />
-    //       <Route path="/services"  element={<ServicePage />}/>
-    //       <Route path="/servicePaymentPage" element={<ServicePayment />} />
-    //       <Route path="/login" element={<Login />} />
-    //       <Route path="/Adoptpage" element={<Adoptpetpage />} />
-    //       <Route path="/forgot" element={<ForgotPassword/>}/>
-    //       <Route path="/reset" element={<PasswordReset/>} />
-    //       <Route path="/about" element={<About />} />
-    //     </Routes>
-    //   </Stack>
-    // </>
+      </>
   );
 
 }

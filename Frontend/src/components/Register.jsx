@@ -118,7 +118,7 @@ const Register = () => {
               <option value="PetCareProvider">Provide pet care service</option>
               <option value="Shelter">Animal Shelter</option>
               <option value="Customer">Pet Enthusiast</option>
-              <option value="admin">Admin</option>
+              <option value="dmin">Admin</option>
             </select>
           </div>
 

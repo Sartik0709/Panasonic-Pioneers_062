@@ -23,7 +23,7 @@ function Petform() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const {user}=useSelector(store=>store.loginData)
+  const {users}=useSelector(store=>store.loginData);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -57,15 +57,29 @@ function Petform() {
     }
     console.log(data)
     try {
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmY5ZjZiODQxNzE5NjRlYTE0NDdlMiIsInJvbGUiOiJTaGVsdGVyIiwiaWF0IjoxNzE4Njg0MjY1LCJleHAiOjE3MTg3NzA2NjV9.p_Yk-ZrvoPl5DHuE8KyOTg4N7OcaW3lQhW9mzRz0Xxc'; // Replace with your actual token
-      const response = await axios.post('https://panasonic-pioneers-062.onrender.com/pets/add', data, {
+      // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NmY5ZjZiODQxNzE5NjRlYTE0NDdlMiIsInJvbGUiOiJTaGVsdGVyIiwiaWF0IjoxNzE4Njg0MjY1LCJleHAiOjE3MTg3NzA2NjV9.p_Yk-ZrvoPl5DHuE8KyOTg4N7OcaW3lQhW9mzRz0Xxc'; // Replace with your actual token
+      const response = await axios.post('https://panasonic-pioneers-062.onrender.com/pets/add/', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`,
+          // 'Authorization': `Bearer ${token}`,
+           Authorization: `Bearer ${users.token}` 
         },
       });
       console.log('Pet added successfully:', response.data);
       setModalIsOpen(true);
+      setFormData({
+        name: '',
+        type: '',
+        breed: '',
+        age: '',
+        gender: '',
+        description: '',
+        healthStatus: '',
+        ownerName: '',
+        ownerContact: '',
+        ownerCity: '',
+        photos: [],
+      });
     } catch (error) {
       setErrorMessage('Failed to submit the form. Please try again.');
       console.error('Error adding pet:', error);
@@ -201,7 +215,7 @@ function Petform() {
           />
         </div>
         {errorMessage && <p className="error">{errorMessage}</p>}
-        <button type="submit" disabled={isLoading}>
+        <button className='submit-btn' type="submit" disabled={isLoading}>
           {isLoading ? 'Submitting...' : 'Submit'}
         </button>
       </form>
