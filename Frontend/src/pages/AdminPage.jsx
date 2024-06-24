@@ -2,6 +2,7 @@ import { useState } from "react";
 import Adminpet from "../components/Adminpet";
 import AdminService from "../components/AdminService";
 import PetsList from "../components/PetLists";
+import Booking from "../components/Booklist";
 
 export const AdminPage = () => {
   const [content, setContent] = useState(<Adminpet />);
@@ -31,6 +32,14 @@ export const AdminPage = () => {
         >
           PETS
         </button>
+        {/* edited */}
+        <button
+          className={`w-full p-3 rounded text-white ${content === 'Bookings' ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
+          onClick={() => handleButtonClick(<Booking />)}
+        >
+          Bookings
+        </button>
+        {/* edited */}
         <button
           className={`w-full p-3 rounded text-white ${content === 'DONATION' ? 'bg-blue-700' : 'bg-blue-500'} hover:bg-blue-700 transition`}
           onClick={() => handleButtonClick('DONATION')}

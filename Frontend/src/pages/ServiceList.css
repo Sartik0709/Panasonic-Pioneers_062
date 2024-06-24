@@ -13,6 +13,11 @@
   height:70vh;
 }
 
+.spinner-container{
+  position: fixed;
+  top:50%;
+  left:50%;
+}
 
 .intro-heading {
   font-size: 36px;

@@ -113,11 +113,11 @@
 
     .navbar3 {       
       display: block;
-      height: 10vh;
-      margin-top: 4vh;
+      height: 20vh;
+      margin-top: 30px;
       width: 10vw;
       background-repeat: no-repeat;
-      
+     align-content: center;
     }
 
   }
