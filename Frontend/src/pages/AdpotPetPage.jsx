@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate hook for n
 import './PetsList.css'; // Custom CSS file
 // import { Card, Button, Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import { Spinner } from '@chakra-ui/react';
 
 
 const PetsList = () => {
@@ -80,8 +81,21 @@ const PetsList = () => {
     setPage(newPage);
   };
 
-  if (loading) return <p>Loading...</p>;
+
   if (error) return <p>Error: {error}</p>;
+  if (loading) {
+    return (
+      <div className="spinner-container">
+        <Spinner
+          thickness='4px'
+          speed='0.65s'
+          emptyColor='gray.200'
+          color='blue.500'
+          size='xl'
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="RPetsList-container">

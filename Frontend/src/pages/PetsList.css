@@ -7,6 +7,16 @@
   margin-bottom: 3%;
   flex-wrap: wrap;
 }
+.spinner-container{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  margin-left: -50%;
+  margin-top: -20%;
+  width: 100%;
+background-color:white;
+}
 
 .RHeader {
   background-color: #333;
